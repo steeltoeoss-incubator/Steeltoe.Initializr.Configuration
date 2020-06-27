@@ -1,3 +1,9 @@
+name:
+  type: text
+  default: MyCompany.SteeltoeExample
+description:
+  type: text
+  default: Demo project for Steeltoe
 steeltoeRelease:
   type: single-select
   default: 2.4.4
