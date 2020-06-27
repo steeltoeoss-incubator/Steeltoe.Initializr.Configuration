@@ -1,21 +1,21 @@
-releases:
+steeltoeReleases:
   type: single-select
   default: 2.4.4
   values:
   - id: 2.4.4
-targets:
+dotnetFrameworkTargets:
   type: single-select
   default: netcoreapp3.1
   values:
   - id: netcoreapp2.1
   - id: netcoreapp3.1
-templates:
+dotnetTemplates:
   type: single-select
   default: webapi
   values:
   - id: webapi
     name: ASP.NET Core Web API
-languages:
+dotnetLanguages:
   type: single-select
   default: csharp
   values:
