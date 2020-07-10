@@ -1,0 +1,88 @@
+name:
+  type: text
+  default: MyCompany.SteeltoeExample
+description:
+  type: text
+  default: Demo project for Steeltoe
+steeltoeRelease:
+  type: single-select
+  default: 2.4.4
+  values:
+  - id: 2.4.4
+dotnetFrameworkTarget:
+  type: single-select
+  default: netcoreapp3.1
+  values:
+  - id: netcoreapp2.1
+  - id: netcoreapp3.1
+dotnetTemplate:
+  type: single-select
+  default: webapi
+  values:
+  - id: webapi
+    name: ASP.NET Core Web API
+dotnetLanguage:
+  type: single-select
+  default: csharp
+  values:
+  - id: csharp
+    name: C#
+dependencies:
+  type: hierarchical-multi-select
+  values:
+  - name: Steeltoe
+    values:
+    - id: actuators
+      name: Actuators
+      description: add management endpoints
+    - id: circuitbreakers
+      name: Circuit Breakers
+      description: add circuit breakers
+    - id: configserver
+      name: Spring Cloud Config Server
+      description: add Spring Cloud Config Server configuration source
+    - id: placeholder
+      name: Placeholder Configuration Source
+      description: add Placeholder configuration source
+    - id: randomvalue
+      name: Random Value Configuration Source
+      description: add Random Value configuration source
+    - id: discovery
+      name: Discovery
+      description: Add discovery client
+    - id: dynamiclogger
+      name: Dynamic Logger
+      description: add dynamic logging
+    - id: mongodb
+      name: MongoDB Connector
+      cdescription: add MongoDB connector
+    - id: mysql
+      name: MySQL Connector
+      description: add MySQL connector
+    - id: mysqlefcore
+      name: MySQL EFCore Connector
+      description: add MySQL EFCore connector
+    - id: oauth
+      name: OAuth Connector
+      description: add OAuth connector
+    - id: postgresql
+      name: PostgreSQL Connector
+      description: add PostgreSQL connector
+    - id: postgresqlefcore
+      name: PostgreSQL EFCore Connector
+      description: add PostgreSQL EFCore connector
+    - id: rabbitmq
+      name: RabbitMQ Connector
+      description: add RabbitMQ connector
+    - id: redis
+      name: Redis Connector
+      description: add Redis connector
+    - id: sqlserver
+      name: Microsoft SQL Server Connector
+      description: add Microsoft SQL Server connector
+    - id: dockerfile
+      name: Dockerfile
+      description: Add a Dockerfile
+    - id: cloudfoundry
+      name: Cloud Foundry
+      description: target Cloud Foundry hosting
