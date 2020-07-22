@@ -55,7 +55,7 @@ dependencies:
       description: add dynamic logging
     - id: mongodb
       name: MongoDB Connector
-      cdescription: add MongoDB connector
+      description: add MongoDB connector
     - id: mysql
       name: MySQL Connector
       description: add MySQL connector
