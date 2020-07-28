@@ -1,2 +1,2 @@
 # Steeltoe.Initializr.Configuration
-Steeltoe.Initializr.WebApi configuration store 
+Configuration for [Steeltoe InitializrWeb](https://github.com/SteeltoeOSS/InitializrWeb)
