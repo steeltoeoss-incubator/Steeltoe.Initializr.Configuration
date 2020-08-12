@@ -101,7 +101,7 @@ metadata:
       - id: azurespringcloud
         name: Azure Spring Cloud
         description: target Microsoft Azure Spring Cloud hosting
-        steeltoeVeronRange: 3.0.0-rc1
+        steeltoeVersionRange: 3.0.0-rc1
 templates:
   - uri: file:///tmp/templates/bundle-2.4-2.1.zip
     steeltoeVersionRange: 2.4.4
