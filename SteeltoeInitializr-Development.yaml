@@ -115,7 +115,7 @@ templates:
     type: webapi
     language: C#
   - uri: file:///tmp/templates/bundle-3.0-3.1.zip
-    steeltoeVersionRange: 3.0.0-rc1
+    steeltoeVersionRange: 3.0.0
     dotNet: 3.1
     type: webapi
     language: C#
