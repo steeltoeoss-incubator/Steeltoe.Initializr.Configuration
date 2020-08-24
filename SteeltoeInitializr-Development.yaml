@@ -14,13 +14,13 @@ metadata:
     values:
     - id: 2.4.4
     - id: 3.0.0-rc1
-  dotnetVersion:
+  dotNetFramework:
     type: single-select
     default: netcoreapp3.1
     values:
     - id: netcoreapp2.1
     - id: netcoreapp3.1
-  type:
+  dotNetTemplate:
     type: single-select
     default: webapi
     values:
@@ -106,16 +106,16 @@ metadata:
 templates:
   - uri: file:///tmp/templates/bundle-2.4-2.1.zip
     steeltoeVersionRange: 2.4.4
-    dotNetVersionRange: '[2.1,3.1]'
-    type: webapi
+    dotNetFrameworkRange: '[2.1,3.1]'
+    dotNetTemplate: webapi
     language: C#
   - uri: file:///tmp/templates/bundle-2.4-3.1.zip
     steeltoeVersionRange: 2.4.4
-    dotNetVersionRange: '[2.1,3.1]'
-    type: webapi
+    dotNetFrameworkRange: '[2.1,3.1]'
+    dotNetTemplate: webapi
     language: C#
   - uri: file:///tmp/templates/bundle-3.0-3.1.zip
     steeltoeVersionRange: 3.0.0
-    dotNet: 3.1
-    type: webapi
+    dotNetFrameworkRange: 3.1
+    dotNetTemplate: webapi
     language: C#
