@@ -1,7 +1,14 @@
-metadata:
+projectTemplates:
+- uri: https://initializr-prj.apps.pcfone.io/steeltoe-2.4.4--netcoreapp2.1--webapi--csharp.izr
+- uri: https://initializr-prj.apps.pcfone.io/steeltoe-2.4.4--netcoreapp3.1--webapi--csharp.izr
+- uri: https://initializr-prj.apps.pcfone.io/steeltoe-3.0.0--netcoreapp3.1--webapi--csharp.izr
+projectMetadata:
   name:
     type: text
-    default: demo
+    default: SteeltoeProject
+  namespace:
+    type: text
+    default: SteeltoeProject
   applicationName:
     type: text
     default: DemoApplication
@@ -13,14 +20,14 @@ metadata:
     default: 2.4.4
     values:
     - id: 2.4.4
-    - id: 3.0.0-rc1
-  dotnetVersion:
+    - id: 3.0.0
+  dotNetFramework:
     type: single-select
     default: netcoreapp3.1
     values:
     - id: netcoreapp2.1
     - id: netcoreapp3.1
-  type:
+  dotNetTemplate:
     type: single-select
     default: webapi
     values:
@@ -32,7 +39,7 @@ metadata:
     values:
     - id: csharp
       name: C#
-  format:
+  archiveMimeType:
     type: single-select
     default: zip
     values:
@@ -42,79 +49,64 @@ metadata:
     values:
     - name: Steeltoe
       values:
-      - id: actuators
+      - id: Actuators
         name: Actuators
         description: add management endpoints
-      - id: circuitbreakers
-        name: Circuit Breakers
+      - id: CircuitBreaker
+        name: Circuit Breaker
         description: add circuit breakers
-      - id: configserver
+      - id: ConfigServer
         name: Spring Cloud Config Server
         description: add Spring Cloud Config Server configuration source
-      - id: placeholder
+      - id: Placeholder
         name: Placeholder Configuration Source
         description: add Placeholder configuration source
-      - id: randomvalue
+      - id: RandomValue
         name: Random Value Configuration Source
         description: add Random Value configuration source
-      - id: discovery
+      - id: Discovery
         name: Discovery
         description: Add discovery client
-      - id: dynamiclogger
+      - id: DynamicLogger
         name: Dynamic Logger
         description: add dynamic logging
-      - id: mongodb
+      - id: MongoDB
         name: MongoDB Connector
         description: add MongoDB connector
-      - id: mysql
+      - id: MySql
         name: MySQL Connector
         description: add MySQL connector
-      - id: mysqlefcore
+      - id: MySqlEFCore
         name: MySQL EFCore Connector
         description: add MySQL EFCore connector
-      - id: oauth
+      - id: OAuth
         name: OAuth Connector
         description: add OAuth connector
-      - id: postgresql
+      - id: PostgreSQL
         name: PostgreSQL Connector
         description: add PostgreSQL connector
-      - id: postgresqlefcore
+      - id: PostgreSQLEFcore
         name: PostgreSQL EFCore Connector
         description: add PostgreSQL EFCore connector
-      - id: rabbitmq
+      - id: RabbitMQ
         name: RabbitMQ Connector
         description: add RabbitMQ connector
-      - id: redis
+      - id: Redis
         name: Redis Connector
         description: add Redis connector
-      - id: sqlserver
+      - id: SQLServer
         name: Microsoft SQL Server Connector
         description: add Microsoft SQL Server connector
-      - id: dockerfile
+      - id: Dockerfile
         name: Dockerfile
         description: Add a Dockerfile
-      - id: cloudfoundry
+      - id: CloudFoundry
         name: Cloud Foundry
         description: target Cloud Foundry hosting
     - name: Azure
       values:
-      - id: azurespringcloud
+      - id: AzureSpringCloud
         name: Azure Spring Cloud
         description: target Microsoft Azure Spring Cloud hosting
-        steeltoeVersionRange: 3.0.0-rc1
-templates:
-  - uri: file:///tmp/templates/bundle-2.4-2.1.zip
-    steeltoeVersionRange: 2.4.4
-    dotNetVersionRange: '[2.1,3.1]'
-    type: webapi
-    language: C#
-  - uri: file:///tmp/templates/bundle-2.4-3.1.zip
-    steeltoeVersionRange: 2.4.4
-    dotNetVersionRange: '[2.1,3.1]'
-    type: webapi
-    language: C#
-  - uri: file:///tmp/templates/bundle-3.0-3.1.zip
-    steeltoeVersionRange: 3.0.0-rc1
-    dotNet: 3.1
-    type: webapi
-    language: C#
+        steeltoeVersionRange: 3.0.0
+        active: false
