@@ -3,18 +3,18 @@ projectTemplates:
 - uri: https://initializr-prj.apps.pcfone.io/steeltoe-2.4.4--netcoreapp3.1--webapi--csharp.izr
 - uri: https://initializr-prj.apps.pcfone.io/steeltoe-3.0.0--netcoreapp3.1--webapi--csharp.izr
 projectMetadata:
-  name:
+  project:
     type: text
-    default: SteeltoeProject
+    default: Sample
   namespace:
     type: text
-    default: SteeltoeProject
-  applicationName:
+    default: Sample
+  application:
     type: text
-    default: DemoApplication
+    default: SampleApplication
   description:
     type: text
-    default: Demo project for Steeltoe
+    default: Sample project application
   steeltoeVersion:
     type: single-select
     default: 2.4.4
