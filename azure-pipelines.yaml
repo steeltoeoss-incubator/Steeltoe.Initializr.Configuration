@@ -1,0 +1,20 @@
+trigger:
+  - dev
+
+variables:
+  - name: major
+    value: 0
+  - name: minor
+    value: 1
+  - name: micro
+    value: 0
+
+name: $(major).$(minor).$(micro)-$(Rev:r)
+
+jobs:
+  - job: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - bash: bin/build
+        displayName: Build IZR Files
