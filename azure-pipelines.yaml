@@ -1,5 +1,5 @@
 trigger:
-  - dev
+  - staging
 
 variables:
   - name: major
@@ -18,3 +18,17 @@ jobs:
     steps:
       - bash: bin/build
         displayName: Build IZR Files
+      - task: CloudFoundryCLIInstall@0
+        displayName: Prep Cloud Foundry CLI
+        inputs:
+          cfVersion: 6.51.0
+      - task: CloudFoundry@1
+        displayName: Deploy
+        inputs:
+          cfEndpoint: PCFone
+          org: group-steeltoe
+          space: initializr
+          deploymentOptions: manifest
+          cfManifest: deploy/cloud-foundry/manifest.yaml
+        condition:
+          and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/staging'), not(eq(variables['build.reason'], 'PullRequest')))
