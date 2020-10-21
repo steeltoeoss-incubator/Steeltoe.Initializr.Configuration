@@ -1,0 +1,93 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+      <TargetFramework>{{DotNetFramework}}</TargetFramework>
+    {{#Auth}}
+    <UserSecretsId >{{UserSecretsId}}</UserSecretsId>
+    {{/Auth}}
+    {{#ExcludeLaunchSettings}}
+    <NoDefaultLaunchSettingsFile>True</NoDefaultLaunchSettingsFile>
+    {{/ExcludeLaunchSettings}}
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    </PropertyGroup>
+
+  <ItemGroup >
+    {{#oauth}}
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="{{asp-dotnet-core-version}}" />
+    {{/oauth}}
+    {{#IndividualB2CAuth}}
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureADB2C.UI" Version="{{asp-dotnet-core-version}}}" />
+    {{/IndividualB2CAuth}}
+    {{#RequiresHttps}}
+    <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="{{asp-dotnet-core-version}}" />
+    {{/RequiresHttps}}
+    {{#azure-spring-cloud}}
+    <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="1.0.0-alpha.1" />
+    {{/azure-spring-cloud}}
+    {{#cloud-foundry}}
+    <PackageReference Include="Steeltoe.Extensions.Configuration.CloudFoundryCore"  Version="{{SteeltoeVersion}}" />
+    {{/cloud-foundry}}
+    {{#config-server}}
+    <PackageReference Include="Steeltoe.Extensions.Configuration.config-serverCore" Version="{{SteeltoeVersion}}" />
+    {{/config-server}}
+    {{#placeholder}}
+    <PackageReference Include="Steeltoe.Extensions.Configuration.PlaceholderCore" Version="{{SteeltoeVersion}}" />
+    {{/placeholder}}
+    {{#random-value}}
+    <PackageReference Include="Steeltoe.Extensions.Configuration.RandomValueBase" Version="{{SteeltoeVersion}}" />
+    {{/random-value}}
+    {{#actuator-or-cloud-foundry}}
+    <PackageReference Include="Steeltoe.Management.ExporterCore"  Version="{{SteeltoeVersion}}"/>
+    <PackageReference Include="Steeltoe.Management.CloudFoundryCore" Version="{{SteeltoeVersion}}" />
+    {{/actuator-or-cloud-foundry}}
+    {{#circuit-breaker}}
+    <PackageReference Include="Steeltoe.CircuitBreaker.HystrixCore" Version="{{SteeltoeVersion}}" />
+    {{/circuit-breaker}}
+    {{#mysql}}
+    <PackageReference Include="MySql.Data" Version="{{mysql-version}}" />
+    {{/mysql}}
+    {{#postgresql}}
+    <PackageReference Include="Npgsql" Version="{{npgsql-version}}" />
+    {{/postgresql}}
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    {{#eureka-client}}
+    <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="{{SteeltoeVersion}}"/>
+    {{/eureka-client}}
+    {{#sqlserver}}
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="{{asp-dotnet-core-version}}" />
+    <PackageReference Include="Steeltoe.CloudFoundry.Connector.EFCore"  Version="{{SteeltoeVersion}}" />
+    {{/sqlserver}}
+    {{#redis}}
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.0" />
+    {{/redis}}
+    {{#any-efcore}}
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="{{asp-dotnet-core-version}}" />
+    <PackageReference Include="Steeltoe.CloudFoundry.Connector.EFCore"  Version="{{SteeltoeVersion}}" />
+    {{/any-efcore}}
+    {{#any-connector}}
+    <PackageReference Include="Steeltoe.CloudFoundry.ConnectorCore"  Version="{{SteeltoeVersion}}"/>
+    {{/any-connector}}
+    {{#postgresql-efcore}}
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  Version="3.1.0" />
+    {{/postgresql-efcore}}
+    {{#mongodb}}
+    <PackageReference Include="MongoDB.Driver" Version="{{mongodb-version}}" />
+    {{/mongodb}}
+    {{#amqp}}
+    <PackageReference Include="RabbitMQ.Client"  Version="{{rabbitmq-version,}}" />
+    {{/amqp}}
+    {{#dynamic-logger}}
+    <PackageReference Include="Steeltoe.Extensions.Logging.DynamicLogger" Version="{{SteeltoeVersion}}"/>
+    {{/dynamic-logger}}
+  </ItemGroup>
+  {{#circuit-breaker}}
+  <ItemGroup Condition="'$(BUILD)' == ''">
+    <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsStreamCore" Version="{{SteeltoeVersion}}" />
+    <PackageReference Include="RabbitMQ.Client" Version="{{rabbitmq-version,}}" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(BUILD)' == 'LOCAL'">
+    <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsEventsCore" Version="{{SteeltoeVersion}}" />
+    <PackageReference Include="System.Threading.ThreadPool" Version="4.3.0" />
+  </ItemGroup>
+  {{/circuit-breaker}}
+</Project>

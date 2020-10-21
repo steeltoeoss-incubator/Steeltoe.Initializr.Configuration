@@ -1,0 +1,56 @@
+description: Steeltoe 2.4.4, netcoreapp3.1, webapi, C#
+constraints:
+  steeltoeVersionRange: 2.4.4
+  dotNetFrameworkRange: netcoreapp3.1
+  dotNetTemplate: webapi
+  language: csharp
+manifest:
+- path: app.config
+- path: appsettings.json
+- path: Dockerfile
+  dependencies: docker
+- path: MyCircuitBreakerCommand.cs
+  dependencies: circuit-breaker
+- path: Program.cs
+- path: ReplaceMe.csproj
+  rename: "{{Name}}.csproj"
+- path: Startup.cs
+- path: Controllers/ValuesController.cs
+- path: Models/ErrorViewModel.cs
+  dependencies: any-efcore
+- path: Models/InitializeContext.cs
+  dependencies: any-efcore
+- path: Models/SampleData.cs
+  dependencies: any-efcore
+- path: Models/TestContext.cs
+  dependencies: any-efcore
+- path: Properties/launchSettings.json
+parameters:
+  - name: asp-dotnet-core-version
+    value: 3.1.0
+  - name: mongodb-version
+    value: 2.8.1
+  - name: mysql-version
+    value: 8.0.16
+  - name: npgsql-version
+    value: 4.0.4
+  - name: rabbitmq-version,
+    value: 5.1.0
+  - name: actuator-or-cloud-foundry
+    expression: actuator || cloud-foundry
+  - name: actuator-or-dynamic-logger
+    expression: actuator || dynamic-logger
+  - name: any-config-source
+    expression: config-server || placeholder || random-value
+  - name: any-connector
+    expression:  mongodb || mysql || oauth || postgresql || amqp || redis || sqlserver
+  - name: any-sql
+    expression: mysql || postgresql || mongodb || sqlserver
+  - name: any-efcore
+    expression: mysql-efcore || postgresql-efcore
+  - name: mysql-or-mysql-efcore
+    expression: MySql || mysql-efcore
+  - name: more-than-one-values-controller-with-args
+    expression: count(sqlserver, mysql, postgresql, mongodb, amqp, redis, config-server, placeholder, random-value, circuit-breaker, cloud-foundry) > 1
+  - name: values-controller-with-args
+    expression: sqlserver || mysql || postgresql || mongodb || amqp || redis || config-server || placeholder || random-value || circuit-breaker || cloud-foundry
