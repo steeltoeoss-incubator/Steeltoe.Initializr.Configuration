@@ -19,13 +19,13 @@ using System.Data;
 using Npgsql;
 using System.Data;
 {{/postgresql}}
-{{#mongodb}}
+{{#data-mongodb}}
 using MongoDB.Driver;
 using System.Data;
-{{/mongodb}}
-{{#redis}}
+{{/data-mongodb}}
+{{#data-redis}}
 using Microsoft.Extensions.Caching.Distributed;
-{{/redis}}
+{{/data-redis}}
 {{#amqp}}
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -121,7 +121,7 @@ namespace {{Namespace}}.Controllers
             return tables;
         }
         {{/postgresql}}
-        {{#mongodb}}
+        {{#data-mongodb}}
         private readonly IMongoClient _mongoClient;
         private readonly MongoUrl _mongoUrl;
         public ValuesController(IMongoClient mongoClient, MongoUrl mongoUrl)
@@ -136,8 +136,8 @@ namespace {{Namespace}}.Controllers
         {
             return _mongoClient.ListDatabaseNames().ToList();
         }
-        {{/mongodb}}
-        {{#redis}}
+        {{/data-mongodb}}
+        {{#data-redis}}
         private readonly IDistributedCache _cache;
         public ValuesController(IDistributedCache cache)
         {
@@ -154,7 +154,7 @@ namespace {{Namespace}}.Controllers
             string myval2 = await _cache.GetStringAsync("MyValue2");
             return new string[]{ myval1, myval2};
         }
-        {{/redis}}
+        {{/data-redis}}
         {{#amqp}}
         private readonly ILogger _logger;
         private readonly ConnectionFactory _factory;
