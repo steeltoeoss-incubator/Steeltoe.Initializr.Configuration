@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-{{#mongodb}}
+{{#data-mongodb}}
 using Steeltoe.Connector.MongoDb;
-{{/mongodb}}
+{{/data-mongodb}}
 {{#mysql-or-mysql-efcore}}
 using Steeltoe.Connector.MySql;
 {{/mysql-or-mysql-efcore}}
@@ -42,9 +42,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 {{#Auth}}
 using Microsoft.AspNetCore.Authentication;
 {{/Auth}}
-{{#oauth}}
+{{#OrganizationalAuth}}
 using Microsoft.AspNetCore.Authentication.AzureAD.UI;
-{{/oauth}}
+{{/OrganizationalAuth}}
 {{#IndividualB2CAuth}}
 using Microsoft.AspNetCore.Authentication.AzureADB2C.UI;
 {{/IndividualB2CAuth}}
@@ -66,10 +66,10 @@ namespace {{Namespace}}
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-{{#oauth}}
+{{#OrganizationalAuth}}
             services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
-{{/oauth}}
+{{/OrganizationalAuth}}
 {{#IndividualB2CAuth}}
             services.AddAuthentication(AzureADB2CDefaults.BearerAuthenticationScheme)
                 .AddAzureADB2CBearer(options => Configuration.Bind("AzureAdB2C", options));
@@ -89,7 +89,7 @@ namespace {{Namespace}}
 {{#amqp}}
             services.AddRabbitMQConnection(Configuration);
 {{/amqp}}
-{{#redis}}
+{{#data-redis}}
             // Add the Redis distributed cache.
             // We are using the Steeltoe Redis Connector to pickup the CloudFoundry
             // Redis Service binding and use it to configure the underlying RedisCache
@@ -97,10 +97,10 @@ namespace {{Namespace}}
             services.AddDistributedRedisCache(Configuration);
             // This works like the above, but adds a IConnectionMultiplexer to the container
             // services.AddRedisConnectionMultiplexer(Configuration);
-{{/redis}}
-{{#mongodb}}
+{{/data-redis}}
+{{#data-mongodb}}
             services.AddMongoClient(Configuration);
-{{/mongodb}}
+{{/data-mongodb}}
 {{#oauth}}
             services.AddOAuthServiceOptions(Configuration);
 {{/oauth}}

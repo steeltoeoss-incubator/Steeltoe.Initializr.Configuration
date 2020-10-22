@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 {{#Auth}}
 using Microsoft.AspNetCore.Authentication;
 {{/Auth}}
-{{#oauth}}
+{{#OrganizationalAuth}}
 using Microsoft.AspNetCore.Authentication.AzureAD.UI;
-{{/oauth}}
+{{/OrganizationalAuth}}
 {{#IndividualB2CAuth}}
 using Microsoft.AspNetCore.Authentication.AzureADB2C.UI;
 {{/IndividualB2CAuth}}
@@ -53,9 +53,9 @@ using Steeltoe.CloudFoundry.Connector.RabbitMQ;
 {{#redis}}
 using Steeltoe.CloudFoundry.Connector.Redis;
 {{/redis}}
-{{#mongodb}}
+{{#data-mongodb}}
 using Steeltoe.CloudFoundry.Connector.MongoDb;
-{{/mongodb}}
+{{/data-mongodb}}
 {{#oauth}}
 using Steeltoe.CloudFoundry.Connector.OAuth;
 {{/oauth}}
@@ -76,10 +76,10 @@ namespace {{Namespace}}
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-{{#oauth}}
+{{#OrganizationalAuth}}
             services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
-{{/oauth}}
+{{/OrganizationalAuth}}
 {{#IndividualB2CAuth}}
             services.AddAuthentication(AzureADB2CDefaults.BearerAuthenticationScheme)
                 .AddAzureADB2CBearer(options => Configuration.Bind("AzureAdB2C", options));
@@ -104,7 +104,7 @@ namespace {{Namespace}}
 {{#amqp}}
             services.AddRabbitMQConnection(Configuration);
 {{/amqp}}
-{{#redis}}
+{{#data-redis}}
             // Add the Redis distributed cache.
 
             // We are using the Steeltoe Redis Connector to pickup the CloudFoundry
@@ -114,10 +114,10 @@ namespace {{Namespace}}
 
             // This works like the above, but adds a IConnectionMultiplexer to the container
             // services.AddRedisConnectionMultiplexer(Configuration);
-{{/redis}}
-{{#mongodb}}
+{{/data-redis}}
+{{#data-mongodb}}
             services.AddMongoClient(Configuration);
-{{/mongodb}}
+{{/data-mongodb}}
 
 {{#oauth}}
             services.AddOAuthServiceOptions(Configuration);
