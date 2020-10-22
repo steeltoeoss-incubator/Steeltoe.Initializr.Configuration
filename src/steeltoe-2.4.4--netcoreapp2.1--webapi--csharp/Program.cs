@@ -18,7 +18,7 @@ using Steeltoe.Extensions.Configuration.CloudFoundry;
 {{/config-server}}
 {{/cloud-foundry}}
 {{#config-server}}
-using Steeltoe.Extensions.Configuration.config-server;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 {{/config-server}}
 {{#placeholder}}
 using Steeltoe.Extensions.Configuration.PlaceholderCore;
@@ -52,7 +52,7 @@ namespace {{Namespace}}
                 {{/config-server}}
                 {{/cloud-foundry}}
                 {{#config-server}}
-			    .Addconfig-server()
+			    .AddConfigServer()
                 {{/config-server}}
                 {{#placeholder}}
                 .AddPlaceholderResolver()

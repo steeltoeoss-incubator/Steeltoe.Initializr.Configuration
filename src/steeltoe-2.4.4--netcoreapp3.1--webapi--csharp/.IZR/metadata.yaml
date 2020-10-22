@@ -43,14 +43,14 @@ parameters:
   - name: any-config-source
     expression: config-server || placeholder || random-value
   - name: any-connector
-    expression:  mongodb || mysql || oauth || postgresql || amqp || redis || sqlserver
+    expression:  data-mongodb || mysql || oauth || postgresql || amqp || data-redis || sqlserver
   - name: any-sql
-    expression: mysql || postgresql || mongodb || sqlserver
+    expression: mysql || postgresql || data-mongodb || sqlserver
   - name: any-efcore
     expression: mysql-efcore || postgresql-efcore
   - name: mysql-or-mysql-efcore
-    expression: MySql || mysql-efcore
+    expression: mysql || mysql-efcore
   - name: more-than-one-values-controller-with-args
-    expression: count(sqlserver, mysql, postgresql, mongodb, amqp, redis, config-server, placeholder, random-value, circuit-breaker, cloud-foundry) > 1
+    expression: count(sqlserver, mysql, postgresql, data-mongodb, amqp, data-redis, config-server, placeholder, random-value, circuit-breaker, cloud-foundry) > 1
   - name: values-controller-with-args
-    expression: sqlserver || mysql || postgresql || mongodb || amqp || redis || config-server || placeholder || random-value || circuit-breaker || cloud-foundry
+    expression: sqlserver || mysql || postgresql || data-mongodb || amqp || data-redis || config-server || placeholder || random-value || circuit-breaker || cloud-foundry
