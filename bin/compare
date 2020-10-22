@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+
+set -e
+
+prog=$(basename $0)
+base_dir=$(cd $(dirname $0)/.. && pwd)
+attr_map=$base_dir/etc/attrmap
+scratch_dir=$base_dir/compare
+old_url=https://start.steeltoe.io/starter.zip
+new_url=http://localhost:1920/api/project
+steeltoe_version=
+dotnet_framework=
+dependencies=
+old_dependencies=
+
+usage () {
+  echo "USAGE"
+  echo "     $prog [-h] -S steeltoeVersion -F dotNetFramework [-d dependencies]"
+  echo
+  echo "OPTIONS"
+  echo "     -d      dependency list, e.g. actuators,mysql"
+  echo "     -h      print this message"
+  echo "     -F      DotNet framework, e.g. netcoreapp3.1"
+  echo "     -S      Steetloe version, e.g. 3.0.0"
+  echo
+  echo "DEPENDENCIES"
+  echo "     comma separated list of dependencies"
+  echo
+  echo "DESCRIPTION"
+  echo "     Compare the generated project between:"
+  echo "         old: $old_url"
+  echo "         new: $new_url"
+}
+
+die () {
+    echo "!!! $*" 2>&1
+    exit 1
+}
+
+msg () {
+    echo "--- $*"
+}
+
+while getopts ":d:hF:S:" opt ; do
+  case $opt in
+    d)
+        dependencies=$OPTARG
+      ;;
+    F)
+        dotnet_framework=$OPTARG
+      ;;
+    h)
+      usage
+      exit
+      ;;
+    S)
+      steeltoe_version=$OPTARG
+      ;;
+    \?)
+      die "invalid option -$OPTARG; run with -h for help"
+      ;;
+    :)
+      die "option -$OPTARG requires an argument; run with -h for help"
+      ;;
+  esac
+done
+shift $(($OPTIND - 1))
+
+if [[ $# > 0 ]]; then
+  die "too many args; run with -h for help"
+fi
+
+old_project_url() {
+    local steeltoe_version=$1
+    local dotnet_framework=$2
+    local dependencies=$3
+    local url="$old_url?steeltoeVersion=$steeltoe_version&targetFramework=$dotnet_framework"
+    [ -n "$dependencies" ] && url+="&dependencies=$dependencies"
+    echo $url
+}
+
+new_project_url() {
+    local steeltoe_version=$1
+    local dotnet_framework=$2
+    local dependencies=$3
+    local url="$new_url?steeltoeVersion=$steeltoe_version&dotNetFramework=$dotnet_framework"
+    [ -n "$dependencies" ] && url+="&dependencies=$dependencies"
+    echo $url
+}
+
+[ -n "$steeltoe_version" ] || die "Steeltoe version not specified; run with -h for help"
+[ -n "$dotnet_framework" ] || die "DotNet framework not specified; run with -h for help"
+
+if [ -n "$dependencies" ]; then
+  delim=
+  for dep in $(echo $dependencies | tr ','  ' '); do
+    old_dep=$(grep '^'$dep':' $attr_map | cut -d ':' -f2)
+    if [ -z "$old_dep" ]; then
+      die "unknown dependency: $dep"
+    fi
+    old_dependencies+=$delim$old_dep
+    delim=,
+  done
+fi
+
+rm -rf $scratch_dir
+mkdir -p $scratch_dir
+msg "getting old project"
+http -o $scratch_dir/old.zip $(old_project_url $steeltoe_version $dotnet_framework $old_dependencies)
+msg "extracting old project"
+unzip -q -d $scratch_dir/old $scratch_dir/old.zip
+msg "getting new project"
+http -o $scratch_dir/new.zip $(new_project_url $steeltoe_version $dotnet_framework $dependencies)
+msg "extracting new project"
+unzip -q -d $scratch_dir/new $scratch_dir/new.zip
+msg "comparing"
+diff -r $scratch_dir/old $scratch_dir/new/*
