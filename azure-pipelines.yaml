@@ -18,17 +18,12 @@ jobs:
     steps:
       - bash: bin/build
         displayName: Build IZR Files
-      - task: CloudFoundryCLIInstall@0
-        displayName: Prep Cloud Foundry CLI
+      - task: Docker@2
+        displayName: Push Docker Image
         inputs:
-          cfVersion: 6.51.0
-      - task: CloudFoundry@1
-        displayName: Deploy
-        inputs:
-          cfEndpoint: PCFone
-          org: group-steeltoe
-          space: initializr
-          deploymentOptions: manifest
-          cfManifest: deploy/cloud-foundry/manifest.yaml
-        condition:
-          and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/staging'), not(eq(variables['build.reason'], 'PullRequest')))
+          command: buildAndPush
+          containerRegistry: SteeltoeContainerRegistry
+          repository: initializr-config
+          tags: |
+            latest
+            $(Build.BuildId)
