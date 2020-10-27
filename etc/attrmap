@@ -1,0 +1,17 @@
+actuator:Actuators
+circuit-breaker:CircuitBreaker
+cloud-foundry:CloudFoundry
+eureka-client:Discovery
+dynamic-logger:DynamicLogger
+data-mongodb:MongoDB
+mysql:MySql
+mysql-efcore:MySqlEFCore
+oauth:OAuthConnector
+postgresql:Postgres
+postgresql-efcore:PostgresEFCore
+amqp:RabbitMQ
+data-redis:Redis
+config-server:ConfigServer
+placeholder:PlaceholderConfig
+random-value:RandomValueConfig
+docker:Dockerfile
