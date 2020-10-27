@@ -23,7 +23,7 @@ jobs:
         inputs:
           command: buildAndPush
           containerRegistry: SteeltoeContainerRegistry
-          repository: initializr-config
+          repository: initializr-izrs
           tags: |
             latest
             $(Build.BuildId)
