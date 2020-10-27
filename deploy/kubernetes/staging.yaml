@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: initializr-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: initializr-config
+  template:
+    metadata:
+      labels:
+        app: initializr-config
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: initializr-config
+        image: steeltoe.azurecr.io/initializr-config
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: initializr-config
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: initializr-config
