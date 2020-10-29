@@ -26,6 +26,8 @@ jobs:
           repository: initializr-izrs
           tags: |
             $(Build.BuildId)
+        condition:
+          and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')))
       - task: KubernetesManifest@0
         displayName: Deploy to Staging
         inputs:
@@ -36,3 +38,5 @@ jobs:
             deploy/kubernetes/staging.yaml
           containers: |
             steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
+        condition:
+          and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')))
