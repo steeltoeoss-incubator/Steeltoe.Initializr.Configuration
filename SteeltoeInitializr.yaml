@@ -1,7 +1,7 @@
 projectTemplates:
-- uri: https://initializr-config.apps.pcfone.io/steeltoe-2.4.4--netcoreapp2.1--webapi--csharp.izr
-- uri: https://initializr-config.apps.pcfone.io/steeltoe-2.4.4--netcoreapp3.1--webapi--csharp.izr
-- uri: https://initializr-config.apps.pcfone.io/steeltoe-3.0.0--netcoreapp3.1--webapi--csharp.izr
+- uri: http://localhost:8889/steeltoe-2.4.x--netcoreapp2.1--webapi--csharp.izr
+- uri: http://localhost:8889/steeltoe-2.4.x--netcoreapp3.1--webapi--csharp.izr
+- uri: http://localhost:8889/steeltoe-3.0.0--netcoreapp3.1--webapi--csharp.izr
 projectMetadata:
   project:
     type: text
