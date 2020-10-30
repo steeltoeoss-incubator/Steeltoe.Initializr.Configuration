@@ -1,6 +1,6 @@
-description: Steeltoe 3.0.0, netcoreapp3.1, webapi, C#
+description: Steeltoe 3.0.x, netcoreapp3.1, webapi, C#
 constraints:
-  steeltoeCompatibilityRange: 3.0.0
+  steeltoeCompatibilityRange: [3.0.0, 4.0.x)
   dotNetFrameworkCompatibilityRange: netcoreapp3.1
   dotNetTemplate: webapi
   language: csharp
