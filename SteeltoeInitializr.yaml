@@ -1,6 +1,6 @@
 projectTemplates:
-- uri: http://52.252.76.164/izrs/steeltoe-2.4.4--netcoreapp2.1--webapi--csharp.izr
-- uri: http://52.252.76.164/izrs/steeltoe-2.4.4--netcoreapp3.1--webapi--csharp.izr
+- uri: http://52.252.76.164/izrs/steeltoe-2.4.x--netcoreapp2.1--webapi--csharp.izr
+- uri: http://52.252.76.164/izrs/steeltoe-2.4.x--netcoreapp3.1--webapi--csharp.izr
 - uri: http://52.252.76.164/izrs/steeltoe-3.0.0--netcoreapp3.1--webapi--csharp.izr
 projectMetadata:
   project:
