@@ -3,15 +3,15 @@ projectTemplates:
 - uri: http://localhost:8889/steeltoe-2.4.x--netcoreapp3.1--webapi--csharp.izr
 - uri: http://localhost:8889/steeltoe-3.0.x--netcoreapp3.1--webapi--csharp.izr
 projectMetadata:
-  project:
+  name:
     type: text
     default: Sample
+  applicationName:
+    type: text
+    default: SampleApplication
   namespace:
     type: text
     default: Sample
-  application:
-    type: text
-    default: SampleApplication
   description:
     type: text
     default: Sample project application
@@ -47,7 +47,7 @@ projectMetadata:
     values:
     - id: csharp
       name: C#
-  archiveMimeType:
+  packaging:
     type: single-select
     default: zip
     values:
