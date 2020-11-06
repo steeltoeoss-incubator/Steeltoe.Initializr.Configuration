@@ -1,7 +1,7 @@
 description: Steeltoe 2.4.x, netcoreapp2.1, webapi, C#
 constraints:
   steeltoeVersionRange: "[2.4.0,3.0.0)"
-  dotNetFrameworkCompatibilityRange: netcoreapp2.1
+  dotNetFrameworkRange: "[netcoreapp2.1,netcoreapp3.0)"
   dotNetTemplate: webapi
   language: csharp
 manifest:
