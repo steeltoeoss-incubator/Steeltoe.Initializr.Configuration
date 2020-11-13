@@ -11,6 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
+  - host: start-staging.steeltoe.io
   - http:
       paths:
       - path: /(.*)
