@@ -12,7 +12,7 @@ metadata:
 spec:
   rules:
   - host: start-staging.steeltoe.io
-  - http:
+    http:
       paths:
       - path: /(.*)
         backend:
