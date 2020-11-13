@@ -21,11 +21,11 @@ spec:
         backend:
           serviceName: initializr-api
           servicePort: 80
-      - path: /config/(.*)
-        backend:
-          serviceName: initializr-config-server
-          servicePort: 8888
-      - path: /izrs/(.*)
-        backend:
-          serviceName: initializr-izrs
-          servicePort: 80
+      # - path: /config/(.*)
+      #   backend:
+      #     serviceName: initializr-config-server
+      #     servicePort: 8888
+      # - path: /izrs/(.*)
+      #   backend:
+      #     serviceName: initializr-izrs
+      #     servicePort: 80
