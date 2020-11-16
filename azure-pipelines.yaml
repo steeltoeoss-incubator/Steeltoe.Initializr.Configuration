@@ -36,9 +36,7 @@ jobs:
           kubernetesServiceConnection: SteeltoeStagingAKS
           namespace: initializr
           manifests: |
-            deploy/kubernetes/deployment.yaml
-            deploy/kubernetes/service.yaml
-            deploy/kubernetes/ingress.yaml
+            deploy/kubernetes
           containers: |
             steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
         condition:
