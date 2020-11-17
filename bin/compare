@@ -8,6 +8,7 @@ attr_map=$base_dir/etc/attrmap
 scratch_dir=$base_dir/compare
 old_url=https://start.steeltoe.io/starter.zip
 new_url=http://localhost:1920/api/project
+#new_url=https://start-staging.steeltoe.io/api/project
 steeltoe_version=
 dotnet_framework=
 dependencies=
@@ -21,7 +22,7 @@ usage () {
   echo "     -d      dependency list, e.g. actuators,mysql"
   echo "     -h      print this message"
   echo "     -F      DotNet framework, e.g. netcoreapp3.1"
-  echo "     -S      Steetloe version, e.g. 3.0.0"
+  echo "     -S      Steeltoe version, e.g. 3.0.0"
   echo
   echo "DEPENDENCIES"
   echo "     comma separated list of dependencies"
