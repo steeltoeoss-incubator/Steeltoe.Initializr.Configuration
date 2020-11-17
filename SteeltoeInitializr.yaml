@@ -1,10 +1,7 @@
 projectTemplates:
-# - uri: https://start.steeltoe.io/izrs/steeltoe-2.4.x--netcoreapp2.1--webapi--csharp.izr
-# - uri: https://start.steeltoe.io/izrs/steeltoe-2.4.x--netcoreapp3.1--webapi--csharp.izr
-# - uri: https://start.steeltoe.io/izrs/steeltoe-3.0.x--netcoreapp3.1--webapi--csharp.izr
-- uri: http://40.65.235.175/izrs/steeltoe-2.4.x--netcoreapp2.1--webapi--csharp.izr
-- uri: http://40.65.235.175/izrs/steeltoe-2.4.x--netcoreapp3.1--webapi--csharp.izr
-- uri: http://40.65.235.175/izrs/steeltoe-3.0.x--netcoreapp3.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-2.4.x--netcoreapp2.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-2.4.x--netcoreapp3.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-3.0.x--netcoreapp3.1--webapi--csharp.izr
 projectMetadata:
   name:
     type: text
