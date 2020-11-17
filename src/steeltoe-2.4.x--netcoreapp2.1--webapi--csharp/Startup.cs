@@ -50,9 +50,9 @@ using Steeltoe.CloudFoundry.Connector.PostgreSql;
 {{#amqp}}
 using Steeltoe.CloudFoundry.Connector.RabbitMQ;
 {{/amqp}}
-{{#redis}}
+{{#data-redis}}
 using Steeltoe.CloudFoundry.Connector.Redis;
-{{/redis}}
+{{/data-redis}}
 {{#data-mongodb}}
 using Steeltoe.CloudFoundry.Connector.MongoDb;
 {{/data-mongodb}}
