@@ -28,7 +28,7 @@
     <PackageReference Include="Steeltoe.Extensions.Configuration.CloudFoundryCore"  Version="{{SteeltoeVersion}}" />
     {{/cloud-foundry}}
     {{#config-server}}
-    <PackageReference Include="Steeltoe.Extensions.Configuration.config-serverCore" Version="{{SteeltoeVersion}}" />
+    <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="{{SteeltoeVersion}}" />
     {{/config-server}}
     {{#placeholder}}
     <PackageReference Include="Steeltoe.Extensions.Configuration.PlaceholderCore" Version="{{SteeltoeVersion}}" />
