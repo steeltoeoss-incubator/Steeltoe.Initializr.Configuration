@@ -47,7 +47,6 @@ namespace {{Namespace}}
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             var builder = WebHost.CreateDefaultBuilder(args)
-                .UseDefaultServiceProvider(configure => configure.ValidateScopes = false)
                 {{#cloud-foundry}}
                 .UseCloudFoundryHosting() //Enable listening on a Env provided port
                 {{^config-server}}
