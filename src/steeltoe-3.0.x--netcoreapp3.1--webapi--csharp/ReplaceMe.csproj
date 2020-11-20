@@ -59,10 +59,10 @@
     <PackageReference Include="Steeltoe.Extensions.Configuration.PlaceholderCore" Version="{{SteeltoeVersion}}" />
     {{/placeholder}}
     {{#actuator-or-cloud-foundry}}
-    <PackageReference Include="Steeltoe.Extensions.Logging.DynamicSerilogCore" Version="{{SteeltoeVersion}}" />
+    <PackageReference Include="Steeltoe.Extensions.Logging.DynamicLogger" Version="{{SteeltoeVersion}}" />
     {{/actuator-or-cloud-foundry}}
     {{#dynamic-logger}}
-    <PackageReference Include="Steeltoe.Extensions.Logging.DynamicSerilogCore" Version="{{SteeltoeVersion}}" />
+    <PackageReference Include="Steeltoe.Extensions.Logging.DynamicLogger" Version="{{SteeltoeVersion}}" />
     {{/dynamic-logger}}
     {{#actuator-or-cloud-foundry}}
     <PackageReference Include="Steeltoe.Management.CloudFoundryCore" Version="{{SteeltoeVersion}}" />
@@ -76,7 +76,6 @@
     {{#azure-spring-cloud}}
     <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="1.0.0-alpha.1" />
     {{/azure-spring-cloud}}
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     {{#redis}}
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.0" />
     {{/redis}}
