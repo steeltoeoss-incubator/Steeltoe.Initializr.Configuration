@@ -104,9 +104,12 @@ namespace {{Namespace}}
 {{#oauth}}
             services.AddOAuthServiceOptions(Configuration);
 {{/oauth}}
+{{#mysql-efcore}}
+            services.AddDbContext<TestContext>(options => options.UseMySql(Configuration));
+{{/mysql-efcore}}
 {{#postgresql-efcore}}
             // Add Context and use Postgres as provider ... provider will be configured from VCAP_ info
-            // services.AddDbContext<MyDbContext>(options => options.UseNpgsql(Configuration));
+            services.AddDbContext<TestContext>(options => options.UseNpgsql(Configuration));
 {{/postgresql-efcore}}
             services.AddControllers();
         }

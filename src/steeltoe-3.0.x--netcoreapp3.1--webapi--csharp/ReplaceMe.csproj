@@ -68,7 +68,7 @@
     <PackageReference Include="Steeltoe.Management.CloudFoundryCore" Version="{{SteeltoeVersion}}" />
     {{/actuator-or-cloud-foundry}}
     {{#config-server}}
-    <PackageReference Include="Steeltoe.Extensions.Configuration.config-serverCore" Version="{{SteeltoeVersion}}" />
+    <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="{{SteeltoeVersion}}" />
     {{/config-server}}
     {{#random-value}}
     <PackageReference Include="Steeltoe.Extensions.Configuration.RandomValueBase" Version="{{SteeltoeVersion}}" />
@@ -90,7 +90,6 @@
   {{#circuit-breaker}}
   <ItemGroup Condition="'$(BUILD)' == ''">
     <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsStreamCore" Version="{{SteeltoeVersion}}" />
-    <PackageReference Include="RabbitMQ.Client" Version="{{rabbitmq-version,}}" />
   </ItemGroup>
   <ItemGroup Condition="'$(BUILD)' == 'LOCAL'">
     <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsEventsCore" Version="{{SteeltoeVersion}}" />
