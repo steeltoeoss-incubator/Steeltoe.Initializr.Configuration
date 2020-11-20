@@ -47,7 +47,7 @@ parameters:
   - name: any-sql
     expression: mysql || postgresql || data-mongodb || sqlserver
   - name: any-efcore
-    expression: mysql-efcore || postgresql-efCore
+    expression: mysql-efcore || postgresql-efcore
   - name: mysql-or-mysql-efcore
     expression: mysql || mysql-efcore
   - name: more-than-one-values-controller-with-args

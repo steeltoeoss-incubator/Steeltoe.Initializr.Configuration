@@ -1,0 +1,95 @@
+#!/bin/sh
+
+set -e
+
+prog=$(basename $0)
+base_dir=$(cd $(dirname $0)/.. && pwd)
+api=https://start.steeltoe.io/api
+steeltoe_version=
+dotnet_framework=
+dependencies=
+old_dependencies=
+
+usage () {
+  echo "USAGE"
+  echo "     $prog [-ah] [-S steeltoeVersion] [-F dotNetFramework] [-d dependencies]"
+  echo
+  echo "OPTIONS"
+  echo "     -a      API URL (default $api)"
+  echo "     -d      dependency list, e.g. actuators,mysql"
+  echo "     -h      print this message"
+  echo "     -F      DotNet framework, e.g. netcoreapp3.1"
+  echo "     -S      Steeltoe version, e.g. 3.0.0"
+  echo
+  echo "DESCRIPTION"
+  echo "     Generates a Sample project."
+}
+
+msg () {
+    echo "--- $*"
+}
+
+die () {
+    echo "!!! $*" 2>&1
+    exit 1
+}
+
+while getopts ":a:d:hF:S:" opt ; do
+  case $opt in
+    a)
+        api=$OPTARG
+      ;;
+    d)
+        dependencies=$OPTARG
+      ;;
+    F)
+        dotnet_framework=$OPTARG
+      ;;
+    h)
+      usage
+      exit
+      ;;
+    S)
+      steeltoe_version=$OPTARG
+      ;;
+    \?)
+      die "invalid option -$OPTARG; run with -h for help"
+      ;;
+    :)
+      die "option -$OPTARG requires an argument; run with -h for help"
+      ;;
+  esac
+done
+
+#
+# main
+#
+
+path=
+
+add_path() {
+  local path=$1
+  [ -n "$path" ] && path+='&'
+  path+=$2
+  echo $path
+}
+
+if [ -n "$steeltoe_version" ]; then
+  path=$(add_path "$path" "steeltoeVersion=$steeltoe_version")
+fi
+
+if [ -n "$dotnet_framework" ]; then
+  path=$(add_path "$path" "dotnetFramework=$dotnet_framework")
+fi
+
+if [ -n "$dependencies" ]; then
+  path=$(add_path "$path" "dependencies=$dependencies")
+fi
+
+url=$api/project
+[ -n "$path" ] && url+='?'$path
+
+msg "project URL: $url"
+http $url -d
+rm -rf Sample
+unzip Sample.zip && rm Sample.zip
