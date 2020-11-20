@@ -83,7 +83,6 @@
   {{#circuit-breaker}}
   <ItemGroup Condition="'$(BUILD)' == ''">
     <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsStreamCore" Version="{{SteeltoeVersion}}" />
-    <PackageReference Include="RabbitMQ.Client" Version="{{rabbitmq-version,}}" />
   </ItemGroup>
   <ItemGroup Condition="'$(BUILD)' == 'LOCAL'">
     <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsEventsCore" Version="{{SteeltoeVersion}}" />
