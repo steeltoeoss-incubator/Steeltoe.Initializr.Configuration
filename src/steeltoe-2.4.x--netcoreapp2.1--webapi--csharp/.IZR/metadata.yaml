@@ -15,7 +15,9 @@ manifest:
 - path: ReplaceMe.csproj
   rename: "{{Name}}.csproj"
 - path: Startup.cs
+- path: Controllers/
 - path: Controllers/ValuesController.cs
+- path: Models/
 - path: Models/ConfigServerData.cs
   dependencies: any-efcore
 - path: Models/ErrorViewModel.cs
@@ -26,6 +28,7 @@ manifest:
   dependencies: any-efcore
 - path: Models/TestContext.cs
   dependencies: any-efcore
+- path: Properties/
 - path: Properties/launchSettings.json
 parameters:
   - name: asp-dotnet-core-version
