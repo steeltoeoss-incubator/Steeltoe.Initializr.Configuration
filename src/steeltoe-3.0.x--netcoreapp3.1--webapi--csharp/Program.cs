@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Azure.SpringCloud.Client;
 {{/azure-spring-cloud}}
 {{#actuator-or-dynamic-logger}}
-using Steeltoe.Extensions.Logging.DynamicSerilog;
+using Steeltoe.Extensions.Logging;
 {{/actuator-or-dynamic-logger}}
 {{#cloud-foundry}}
 using Steeltoe.Common.Hosting;
@@ -39,7 +39,6 @@ namespace {{Namespace}}
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             var builder = WebHost.CreateDefaultBuilder(args)
-                .UseDefaultServiceProvider(configure => configure.ValidateScopes = false)
 {{#cloud-foundry}}
                 .UseCloudHosting() //Enable listening on a Env provided port
 {{^config-server}}
@@ -59,7 +58,7 @@ namespace {{Namespace}}
                 .UseAzureSpringCloudService()
 {{/azure-spring-cloud}}
 {{#actuator-or-dynamic-logger}}
-                .ConfigureLogging((context, builder) => builder.AddSerilogDynamicConsole())
+                .ConfigureLogging((context, builder) => builder.AddDynamicConsole())
 {{/actuator-or-dynamic-logger}}
                 .UseStartup<Startup>();
             return builder;

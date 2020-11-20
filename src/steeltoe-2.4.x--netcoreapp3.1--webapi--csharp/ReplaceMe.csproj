@@ -49,7 +49,6 @@
     {{#postgresql}}
     <PackageReference Include="Npgsql" Version="{{npgsql-version}}" />
     {{/postgresql}}
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     {{#eureka-client}}
     <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="{{SteeltoeVersion}}"/>
     {{/eureka-client}}
