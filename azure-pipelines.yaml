@@ -42,7 +42,8 @@ jobs:
       - task: Kubernetes@1
         displayName: Restart InitializrApi
         inputs:
-          kubernetesServiceConnection: SteeltoeStagingAKS
+          connectionType: Kubernetes Service Connection
+          kubernetesServiceEndpoint: SteeltoeStagingAKS
           namespace: initializr
           command: rollout
           arguments: restart deployment/initializr-api
