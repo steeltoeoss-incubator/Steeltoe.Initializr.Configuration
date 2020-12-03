@@ -125,7 +125,6 @@ projectMetadata:
       - id: azure-spring-cloud
         name: Azure Spring Cloud
         description: Target Microsoft Azure Spring Cloud hosting.
-        steeltoeVersionRange: "[2.4.0,3.0.0)"
         dotNetFrameworkRange: netcoreapp3.1
         active: false
       - id: cloud-foundry
