@@ -35,6 +35,8 @@ projectMetadata:
       name: .NET Core 2.1
     - id: netcoreapp3.1
       name: .NET Core 3.1
+    - id: net5.0
+      name: .NET 5.0
   dotNetTemplate:
     type: single-select
     default: webapi
