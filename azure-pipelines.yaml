@@ -43,7 +43,7 @@ jobs:
         displayName: Restart InitializrApi
         inputs:
           connectionType: Kubernetes Service Connection
-          kubernetesServiceEndpoint: SteeltoeStagingAKS
+          kubernetesServiceEndpoint: SteeltoeProductionAKS
           namespace: initializr
           command: rollout
           arguments: restart deployment/initializr-api
