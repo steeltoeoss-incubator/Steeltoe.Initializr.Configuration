@@ -32,10 +32,18 @@ jobs:
       - task: KubernetesManifest@0
         displayName: Deploy to Production
         inputs:
-          action: deploy
           kubernetesServiceConnection: SteeltoeProductionAKS
           namespace: initializr
+          action: deploy
           manifests: deploy/kubernetes/*.yaml
           containers: steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
         condition:
           and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')))
+      - task: Kubernetes@1
+        displayName: Restart InitializrApi
+        inputs:
+          connectionType: Kubernetes Service Connection
+          kubernetesServiceEndpoint: SteeltoeStagingAKS
+          namespace: initializr
+          command: rollout
+          arguments: restart deployment/initializr-api
