@@ -21,8 +21,6 @@ projectMetadata:
     values:
     - id: 2.5.2
       name: Steeltoe 2.5.1 Maintenance Release
-    - id: 3.0.1
-      name: Steeltoe 3.0.1 Maintenance Release
     - id: 3.0.2
       name: Steeltoe 3.0.2 Maintenance Release
   dotNetFramework:
