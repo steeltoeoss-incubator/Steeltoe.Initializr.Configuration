@@ -19,20 +19,20 @@ projectMetadata:
     type: single-select
     default: 3.0.2
     values:
-    - id: 2.5.2
-      name: Steeltoe 2.5.1 Maintenance Release
     - id: 3.0.2
       name: Steeltoe 3.0.2 Maintenance Release
+    - id: 2.5.2
+      name: Steeltoe 2.5.1 Maintenance Release
   dotNetFramework:
     type: single-select
     default: netcoreapp3.1
     values:
-    - id: netcoreapp2.1
-      name: .NET Core 2.1
-    - id: netcoreapp3.1
-      name: .NET Core 3.1
     - id: net5.0
       name: .NET 5.0
+    - id: netcoreapp3.1
+      name: .NET Core 3.1
+    - id: netcoreapp2.1
+      name: .NET Core 2.1
   dotNetTemplate:
     type: single-select
     default: webapi
