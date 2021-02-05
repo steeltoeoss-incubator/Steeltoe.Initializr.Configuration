@@ -24,9 +24,9 @@
     {{#any-efcore}}
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="{{asp-dotnet-core-version}}" />
     {{/any-efcore}}
-    {{#mongodb}}
+    {{#data-mongodb}}
     <PackageReference Include="MongoDB.Driver" Version="{{mongodb-version}}" />
-    {{/mongodb}}
+    {{/data-mongodb}}
     {{#mysql}}
     <PackageReference Include="MySql.Data" Version="{{mysql-version}}" />
     {{/mysql}}
@@ -81,9 +81,9 @@
     {{#azure-spring-cloud}}
     <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="2.0.0-preview.1" />
     {{/azure-spring-cloud}}
-    {{#redis}}
+    {{#data-redis}}
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.0" />
-    {{/redis}}
+    {{/data-redis}}
     {{#postgresql-efcore}}
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  Version="3.1.0" />
     {{/postgresql-efcore}}

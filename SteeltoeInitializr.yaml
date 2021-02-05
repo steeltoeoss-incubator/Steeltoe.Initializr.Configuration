@@ -1,6 +1,6 @@
 projectTemplates:
-- uri: http://initializr-izrs/steeltoe-2.4.x--netcoreapp2.1--webapi--csharp.izr
-- uri: http://initializr-izrs/steeltoe-2.4.x--netcoreapp3.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-2.5.x--netcoreapp2.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-2.5.x--netcoreapp3.1--webapi--csharp.izr
 - uri: http://initializr-izrs/steeltoe-3.0.x--netcoreapp3.1--webapi--csharp.izr
 projectMetadata:
   name:
@@ -22,7 +22,7 @@ projectMetadata:
     - id: 3.0.2
       name: Steeltoe 3.0.2 Maintenance Release
     - id: 2.5.2
-      name: Steeltoe 2.5.1 Maintenance Release
+      name: Steeltoe 2.5.2 Maintenance Release
   dotNetFramework:
     type: single-select
     default: netcoreapp3.1

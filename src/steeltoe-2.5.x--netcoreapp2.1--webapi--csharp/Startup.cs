@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 {{#Auth}}
 using Microsoft.AspNetCore.Authentication;
 {{/Auth}}
-{{#OrganizationalAuth}}
+{{#oauth}}
 using Microsoft.AspNetCore.Authentication.AzureAD.UI;
-{{/OrganizationalAuth}}
+{{/oauth}}
 {{#IndividualB2CAuth}}
 using Microsoft.AspNetCore.Authentication.AzureADB2C.UI;
 {{/IndividualB2CAuth}}
@@ -21,14 +21,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Hosting;
-
 {{#actuator-or-cloud-foundry}}
 using Steeltoe.Management.CloudFoundry;
 using Steeltoe.Management.Endpoint;
 using Steeltoe.Management.Hypermedia;
 {{/actuator-or-cloud-foundry}}
-
+{{#cloud-foundry}}
+using Steeltoe.Extensions.Configuration.CloudFoundry;
+{{/cloud-foundry}}
 {{#circuit-breaker}}
 using Steeltoe.CircuitBreaker.Hystrix;
 {{/circuit-breaker}}
@@ -50,9 +50,9 @@ using Steeltoe.CloudFoundry.Connector.PostgreSql;
 {{#amqp}}
 using Steeltoe.CloudFoundry.Connector.RabbitMQ;
 {{/amqp}}
-{{#redis}}
+{{#data-redis}}
 using Steeltoe.CloudFoundry.Connector.Redis;
-{{/redis}}
+{{/data-redis}}
 {{#data-mongodb}}
 using Steeltoe.CloudFoundry.Connector.MongoDb;
 {{/data-mongodb}}
@@ -62,6 +62,7 @@ using Steeltoe.CloudFoundry.Connector.OAuth;
 {{#postgresql-efcore}}
 using Steeltoe.CloudFoundry.Connector.PostgreSql.EFCore;
 {{/postgresql-efcore}}
+
 namespace {{Namespace}}
 {
     public class Startup
@@ -89,10 +90,11 @@ namespace {{Namespace}}
 {{/mysql}}
 {{#actuator}}
 {{#cloud-foundry}}
-	        services.AddCloudFoundryActuators(Configuration, MediaTypeVersion.V2, ActuatorContext.ActuatorAndCloudFoundry);
+            services.ConfigureCloudFoundryOptions(Configuration);
+            services.AddCloudFoundryActuators(Configuration, MediaTypeVersion.V2, ActuatorContext.ActuatorAndCloudFoundry);
 {{/cloud-foundry}}
 {{^cloud-foundry}}
-	        services.AddCloudFoundryActuators(Configuration);
+            services.AddCloudFoundryActuators(Configuration);
 {{/cloud-foundry}}
 {{/actuator}}
 {{#eureka-client}}
@@ -131,11 +133,10 @@ namespace {{Namespace}}
 {{#sqlserver}}
             services.AddSqlServerConnection(Configuration);
 {{/sqlserver}}
-            services.AddControllers();
+            services.AddMvc();
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -147,11 +148,8 @@ namespace {{Namespace}}
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             {{/RequiresHttps}}
-
-
             {{#Auth}}
             app.UseAuthentication();
             {{/Auth}}
@@ -168,11 +166,7 @@ namespace {{Namespace}}
             {{#eureka-client}}
             app.UseDiscoveryClient();
             {{/eureka-client}}
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseMvc();
         }
     }
 }

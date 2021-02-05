@@ -56,9 +56,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="{{asp-dotnet-core-version}}" />
     <PackageReference Include="Steeltoe.CloudFoundry.Connector.EFCore"  Version="{{SteeltoeVersion}}" />
     {{/sqlserver}}
-    {{#redis}}
+    {{#data-redis}}
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.0" />
-    {{/redis}}
+    {{/data-redis}}
     {{#any-efcore}}
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="{{asp-dotnet-core-version}}" />
     <PackageReference Include="Steeltoe.CloudFoundry.Connector.EFCore"  Version="{{SteeltoeVersion}}" />
@@ -69,9 +69,9 @@
     {{#postgresql-efcore}}
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  Version="3.1.0" />
     {{/postgresql-efcore}}
-    {{#mongodb}}
+    {{#data-mongodb}}
     <PackageReference Include="MongoDB.Driver" Version="{{mongodb-version}}" />
-    {{/mongodb}}
+    {{/data-mongodb}}
     {{#amqp}}
     <PackageReference Include="RabbitMQ.Client"  Version="{{rabbitmq-version,}}" />
     {{/amqp}}

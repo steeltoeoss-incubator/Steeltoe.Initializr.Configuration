@@ -1,6 +1,6 @@
-description: Steeltoe 2.4.x, netcoreapp3.1, webapi, C#
+description: Steeltoe 2.5.x, netcoreapp3.1, webapi, C#
 constraints:
-  steeltoeVersionRange: "[2.4.0,3.0.0)"
+  steeltoeVersionRange: "[2.5.0,3.0.0)"
   dotNetFrameworkRange: "netcoreapp3.1"
   dotNetTemplate: webapi
   language: csharp
@@ -26,15 +26,15 @@ manifest:
 - path: Properties/launchSettings.json
 parameters:
   - name: asp-dotnet-core-version
-    value: 3.1.0
+    value: 3.1.*
   - name: mongodb-version
-    value: 2.8.1
+    value: 2.8.*
   - name: mysql-version
-    value: 8.0.16
+    value: 8.0.*
   - name: npgsql-version
-    value: 4.0.4
+    value: 4.0.*
   - name: rabbitmq-version,
-    value: 5.1.0
+    value: 5.1.*
   - name: actuator-or-cloud-foundry
     expression: actuator || cloud-foundry
   - name: actuator-or-dynamic-logger
