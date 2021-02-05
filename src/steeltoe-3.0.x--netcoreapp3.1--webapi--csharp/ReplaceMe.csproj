@@ -24,9 +24,9 @@
     {{#any-efcore}}
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="{{asp-dotnet-core-version}}" />
     {{/any-efcore}}
-    {{#mongodb}}
+    {{#data-mongodb}}
     <PackageReference Include="MongoDB.Driver" Version="{{mongodb-version}}" />
-    {{/mongodb}}
+    {{/data-mongodb}}
     {{#mysql}}
     <PackageReference Include="MySql.Data" Version="{{mysql-version}}" />
     {{/mysql}}

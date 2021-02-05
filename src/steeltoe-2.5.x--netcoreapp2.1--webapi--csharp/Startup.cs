@@ -117,9 +117,9 @@ namespace {{Namespace}}
             // This works like the above, but adds a IConnectionMultiplexer to the container
             // services.AddRedisConnectionMultiplexer(Configuration);
 {{/data-redis}}
-{{#mongodb}}
+{{#data-mongodb}}
             services.AddMongoClient(Configuration);
-{{/mongodb}}
+{{/data-mongodb}}
 
 {{#oauth}}
             services.AddOAuthServiceOptions(Configuration);

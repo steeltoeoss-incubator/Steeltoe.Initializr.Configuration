@@ -69,9 +69,9 @@
     {{#postgresql-efcore}}
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  Version="3.1.0" />
     {{/postgresql-efcore}}
-    {{#mongodb}}
+    {{#data-mongodb}}
     <PackageReference Include="MongoDB.Driver" Version="{{mongodb-version}}" />
-    {{/mongodb}}
+    {{/data-mongodb}}
     {{#amqp}}
     <PackageReference Include="RabbitMQ.Client"  Version="{{rabbitmq-version,}}" />
     {{/amqp}}
