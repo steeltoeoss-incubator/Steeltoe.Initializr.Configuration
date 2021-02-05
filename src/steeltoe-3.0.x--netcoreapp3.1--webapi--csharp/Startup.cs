@@ -34,7 +34,12 @@ using Steeltoe.Connector.SqlServer.EFCore;
 using Steeltoe.Discovery.Client;
 {{/eureka-client}}
 {{#actuator}}
+{{#cloud-foundry}}
 using Steeltoe.Management.CloudFoundry;
+{{/cloud-foundry}}
+{{^cloud-foundry}}
+using Steeltoe.Management.Endpoint;
+{{/cloud-foundry}}
 {{/actuator}}
 {{#RequiresHttps}}
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -78,7 +83,12 @@ namespace {{Namespace}}
             services.AddMySqlConnection(Configuration);
 {{/mysql}}
 {{#actuator}}
+{{#cloud-foundry}}
             services.AddCloudFoundryActuators(Configuration);
+{{/cloud-foundry}}
+{{^cloud-foundry}}
+            services.AddAllActuators(Configuration);
+{{/cloud-foundry}}
 {{/actuator}}
 {{#eureka-client}}
             services.AddDiscoveryClient(Configuration);

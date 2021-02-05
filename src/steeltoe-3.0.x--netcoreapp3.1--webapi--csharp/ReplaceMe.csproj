@@ -64,9 +64,14 @@
     {{#dynamic-logger}}
     <PackageReference Include="Steeltoe.Extensions.Logging.DynamicLogger" Version="{{SteeltoeVersion}}" />
     {{/dynamic-logger}}
-    {{#actuator-or-cloud-foundry}}
+    {{#actuator}}
+    {{#cloud-foundry}}
     <PackageReference Include="Steeltoe.Management.CloudFoundryCore" Version="{{SteeltoeVersion}}" />
-    {{/actuator-or-cloud-foundry}}
+    {{/cloud-foundry}}
+    {{^cloud-foundry}}
+    <PackageReference Include="Steeltoe.Management.EndpointCore" Version="{{SteeltoeVersion}}" />
+    {{/cloud-foundry}}
+    {{/actuator}}
     {{#config-server}}
     <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="{{SteeltoeVersion}}" />
     {{/config-server}}
