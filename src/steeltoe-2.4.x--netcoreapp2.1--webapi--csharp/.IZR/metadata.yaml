@@ -22,10 +22,6 @@ manifest:
   dependencies: any-efcore
 - path: Models/ErrorViewModel.cs
   dependencies: any-efcore
-- path: Models/InitializeContext.cs
-  dependencies: any-efcore
-- path: Models/SampleData.cs
-  dependencies: any-efcore
 - path: Models/TestContext.cs
   dependencies: any-efcore
 - path: Properties/
