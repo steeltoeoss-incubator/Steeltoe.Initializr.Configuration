@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-{{#azure-spring-cloud}}
-using Microsoft.Azure.SpringCloud.Client;
-{{/azure-spring-cloud}}
 {{#actuator-or-dynamic-logger}}
 using Steeltoe.Extensions.Logging;
 {{/actuator-or-dynamic-logger}}
@@ -51,9 +48,6 @@ namespace {{Namespace}}
 {{#random-value}}
                 .ConfigureAppConfiguration((b) => b.AddRandomValueSource())
 {{/random-value}}
-{{#azure-spring-cloud}}
-                .UseAzureSpringCloudService()
-{{/azure-spring-cloud}}
 {{#actuator-or-dynamic-logger}}
                 .ConfigureLogging((context, builder) => builder.AddDynamicConsole())
 {{/actuator-or-dynamic-logger}}
