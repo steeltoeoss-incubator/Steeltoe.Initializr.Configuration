@@ -1,6 +1,6 @@
 projectTemplates:
-- uri: http://initializr-izrs/steeltoe-2.4.x--netcoreapp2.1--webapi--csharp.izr
-- uri: http://initializr-izrs/steeltoe-2.4.x--netcoreapp3.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-2.5.x--netcoreapp2.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-2.5.x--netcoreapp3.1--webapi--csharp.izr
 - uri: http://initializr-izrs/steeltoe-3.0.x--netcoreapp3.1--webapi--csharp.izr
 projectMetadata:
   name:
