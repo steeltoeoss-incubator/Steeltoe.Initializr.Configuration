@@ -12,12 +12,12 @@
     </PropertyGroup>
 
   <ItemGroup >
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.CookiePolicy" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="{{asp-dotnet-core-version}}" />
+    <PackageReference Include="Microsoft.AspNetCore.CookiePolicy" Version="{{asp-dotnet-core-version}}" />
+    <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="{{asp-dotnet-core-version}}" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="{{asp-dotnet-core-version}}" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="{{asp-dotnet-core-version}}" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="{{asp-dotnet-core-version}}" />
     {{#oauth}}
     <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="{{asp-dotnet-core-version}}" />
     {{/oauth}}
@@ -76,7 +76,7 @@
     <PackageReference Include="MongoDB.Driver" Version="{{mongodb-version}}" />
     {{/data-mongodb}}
     {{#amqp}}
-    <PackageReference Include="RabbitMQ.Client"  Version="{{rabbitmq-version,}}" />
+    <PackageReference Include="RabbitMQ.Client"  Version="{{rabbitmq-version}}" />
     {{/amqp}}
     {{#dynamic-logger}}
     <PackageReference Include="Steeltoe.Extensions.Logging.DynamicLogger" Version="{{SteeltoeVersion}}"/>
@@ -88,7 +88,7 @@
   </ItemGroup>
   <ItemGroup Condition="'$(BUILD)' == 'LOCAL'">
     <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsEventsCore" Version="{{SteeltoeVersion}}" />
-    <PackageReference Include="System.Threading.ThreadPool" Version="4.3.0" />
+    <PackageReference Include="System.Threading.ThreadPool" Version="{{threading-pool-version}}" />
   </ItemGroup>
   {{/circuit-breaker}}
 </Project>

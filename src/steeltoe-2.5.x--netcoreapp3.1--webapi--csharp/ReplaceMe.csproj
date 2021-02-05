@@ -22,7 +22,7 @@
     <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="{{asp-dotnet-core-version}}" />
     {{/RequiresHttps}}
     {{#azure-spring-cloud}}
-    <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="1.0.0-alpha.1" />
+    <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="{{azure-spring-cloud-version}}" />
     {{/azure-spring-cloud}}
     {{#cloud-foundry}}
     <PackageReference Include="Steeltoe.Extensions.Configuration.CloudFoundryCore"  Version="{{SteeltoeVersion}}" />
@@ -57,7 +57,7 @@
     <PackageReference Include="Steeltoe.CloudFoundry.Connector.EFCore"  Version="{{SteeltoeVersion}}" />
     {{/sqlserver}}
     {{#data-redis}}
-    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="{{asp-dotnet-core-version}}" />
     {{/data-redis}}
     {{#any-efcore}}
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="{{asp-dotnet-core-version}}" />
@@ -67,13 +67,13 @@
     <PackageReference Include="Steeltoe.CloudFoundry.ConnectorCore"  Version="{{SteeltoeVersion}}"/>
     {{/any-connector}}
     {{#postgresql-efcore}}
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  Version="3.1.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  Version="{{asp-dotnet-core-version}}" />
     {{/postgresql-efcore}}
     {{#data-mongodb}}
     <PackageReference Include="MongoDB.Driver" Version="{{mongodb-version}}" />
     {{/data-mongodb}}
     {{#amqp}}
-    <PackageReference Include="RabbitMQ.Client"  Version="{{rabbitmq-version,}}" />
+    <PackageReference Include="RabbitMQ.Client"  Version="{{rabbitmq-version}}" />
     {{/amqp}}
     {{#dynamic-logger}}
     <PackageReference Include="Steeltoe.Extensions.Logging.DynamicLogger" Version="{{SteeltoeVersion}}"/>
@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup Condition="'$(BUILD)' == 'LOCAL'">
     <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsEventsCore" Version="{{SteeltoeVersion}}" />
-    <PackageReference Include="System.Threading.ThreadPool" Version="4.3.0" />
+    <PackageReference Include="System.Threading.ThreadPool" Version="{{threading-pool-version}}" />
   </ItemGroup>
   {{/circuit-breaker}}
 </Project>

@@ -78,17 +78,14 @@
     {{#random-value}}
     <PackageReference Include="Steeltoe.Extensions.Configuration.RandomValueBase" Version="{{SteeltoeVersion}}" />
     {{/random-value}}
-    {{#azure-spring-cloud}}
-    <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="2.0.0-preview.1" />
-    {{/azure-spring-cloud}}
     {{#data-redis}}
-    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="{{asp-dotnet-core-version}}" />
     {{/data-redis}}
     {{#postgresql-efcore}}
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  Version="3.1.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  Version="{{asp-dotnet-core-version}}" />
     {{/postgresql-efcore}}
     {{#amqp}}
-    <PackageReference Include="RabbitMQ.Client"  Version="{{rabbitmq-version,}}" />
+    <PackageReference Include="RabbitMQ.Client"  Version="{{rabbitmq-version}}" />
     {{/amqp}}
   </ItemGroup>
   {{#circuit-breaker}}
@@ -97,7 +94,7 @@
   </ItemGroup>
   <ItemGroup Condition="'$(BUILD)' == 'LOCAL'">
     <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsEventsCore" Version="{{SteeltoeVersion}}" />
-    <PackageReference Include="System.Threading.ThreadPool" Version="4.3.0" />
+    <PackageReference Include="System.Threading.ThreadPool" Version="{{threading-pool-version}}" />
   </ItemGroup>
   {{/circuit-breaker}}
 </Project>
