@@ -24,9 +24,9 @@ using Steeltoe.Connector.PostgreSql.EFCore;
 {{#amqp}}
 using Steeltoe.Connector.RabbitMQ;
 {{/amqp}}
-{{#redis}}
+{{#data-redis}}
 using Steeltoe.Connector.Redis;
-{{/redis}}
+{{/data-redis}}
 {{#sqlserver}}
 using Steeltoe.Connector.SqlServer.EFCore;
 {{/sqlserver}}

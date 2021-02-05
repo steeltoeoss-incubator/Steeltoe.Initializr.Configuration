@@ -59,9 +59,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="{{asp-dotnet-core-version}}" />
     <PackageReference Include="Steeltoe.CloudFoundry.Connector.EFCore" Version="{{SteeltoeVersion}}" />
     {{/sqlserver}}
-    {{#redis}}
+    {{#data-redis}}
     <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="{{asp-dotnet-core-version}}" />
-    {{/redis}}
+    {{/data-redis}}
     {{#any-efcore}}
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="{{asp-dotnet-core-version}}" />
     <PackageReference Include="Steeltoe.CloudFoundry.Connector.EFCore"  Version="{{SteeltoeVersion}}" />
