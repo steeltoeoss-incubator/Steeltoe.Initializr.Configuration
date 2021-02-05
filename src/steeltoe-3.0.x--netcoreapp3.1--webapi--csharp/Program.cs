@@ -30,9 +30,6 @@ namespace {{Namespace}}
         {
             CreateWebHostBuilder(args)
             .Build()
-            {{#any-efcore}}
-            .InitializeDbContexts()
-            {{/any-efcore}}
             .Run();
         }
 
