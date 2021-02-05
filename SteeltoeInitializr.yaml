@@ -1,7 +1,8 @@
 projectTemplates:
-- uri: http://initializr-izrs/steeltoe-2.4.x--netcoreapp2.1--webapi--csharp.izr
-- uri: http://initializr-izrs/steeltoe-2.4.x--netcoreapp3.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-3.0.x--net5.0--webapi--csharp.izr
 - uri: http://initializr-izrs/steeltoe-3.0.x--netcoreapp3.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-2.5.x--netcoreapp3.1--webapi--csharp.izr
+- uri: http://initializr-izrs/steeltoe-2.5.x--netcoreapp2.1--webapi--csharp.izr
 projectMetadata:
   name:
     type: text
@@ -22,7 +23,7 @@ projectMetadata:
     - id: 3.0.2
       name: Steeltoe 3.0.2 Maintenance Release
     - id: 2.5.2
-      name: Steeltoe 2.5.1 Maintenance Release
+      name: Steeltoe 2.5.2 Maintenance Release
   dotNetFramework:
     type: single-select
     default: netcoreapp3.1
@@ -75,8 +76,8 @@ projectMetadata:
         name: Actuators
         description: Add management endpoints.
       - id: circuit-breaker
-        name: Circuit Breaker
-        description: Add circuit breakers.
+        name: Netflix Hystrix Circuit Breaker
+        description: Add Netflix Hystrix circuit breakers.
     - name: SQL
       values:
       - id: sqlserver
@@ -125,7 +126,7 @@ projectMetadata:
       - id: azure-spring-cloud
         name: Azure Spring Cloud
         description: Target Microsoft Azure Spring Cloud hosting.
-        dotNetFrameworkRange: netcoreapp3.1
+        dotNetFrameworkRange: "[netcoreapp3.1,net5.0)"
         active: false
       - id: cloud-foundry
         name: Cloud Foundry

@@ -78,9 +78,6 @@
     {{#random-value}}
     <PackageReference Include="Steeltoe.Extensions.Configuration.RandomValueBase" Version="{{SteeltoeVersion}}" />
     {{/random-value}}
-    {{#azure-spring-cloud}}
-    <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="{{azure-spring-cloud-version}}" />
-    {{/azure-spring-cloud}}
     {{#data-redis}}
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="{{asp-dotnet-core-version}}" />
     {{/data-redis}}
