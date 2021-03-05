@@ -22,8 +22,8 @@ projectMetadata:
     values:
     - id: 3.0.2
       name: Steeltoe 3.0.2 Maintenance Release
-    - id: 2.5.2
-      name: Steeltoe 2.5.2 Maintenance Release
+    - id: 2.5.3
+      name: Steeltoe 2.5.3 Maintenance Release
   dotNetFramework:
     type: single-select
     default: netcoreapp3.1
