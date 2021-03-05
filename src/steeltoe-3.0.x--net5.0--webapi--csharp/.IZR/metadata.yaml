@@ -32,7 +32,7 @@ parameters:
   - name: mysql-version
     value: 8.0.*
   - name: npgsql-version
-    value: 4.1.*
+    value: 5.0.*
   - name: rabbitmq-version
     value: 5.1.*
   - name: sqlclient-version
