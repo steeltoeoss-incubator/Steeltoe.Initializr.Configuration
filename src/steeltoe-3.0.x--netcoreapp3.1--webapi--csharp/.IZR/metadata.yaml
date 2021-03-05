@@ -35,6 +35,8 @@ parameters:
     value: 4.0.*
   - name: rabbitmq-version
     value: 5.1.*
+  - name: sqlclient-version
+    value: 4.8.*
   - name: threading-pool-version
     value: 4.3.*
   - name: azure-spring-cloud-version
