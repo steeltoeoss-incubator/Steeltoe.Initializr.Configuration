@@ -51,6 +51,7 @@
     {{/postgresql}}
     {{#eureka-client}}
     <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="{{SteeltoeVersion}}"/>
+    <PackageReference Include="Steeltoe.Discovery.EurekaBase" Version="{{SteeltoeVersion}}"/>
     {{/eureka-client}}
     {{#sqlserver}}
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="{{asp-dotnet-core-version}}" />

@@ -52,6 +52,7 @@
     {{/sqlserver}}
     {{#eureka-client}}
     <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="{{SteeltoeVersion}}"/>
+    <PackageReference Include="Steeltoe.Discovery.Eureka" Version="{{SteeltoeVersion}}"/>
     {{/eureka-client}}
     {{#cloud-foundry}}
     <PackageReference Include="Steeltoe.Extensions.Configuration.CloudFoundryCore"  Version="{{SteeltoeVersion}}" />
