@@ -28,7 +28,7 @@ using Steeltoe.Connector.RabbitMQ;
 using Steeltoe.Connector.Redis;
 {{/data-redis}}
 {{#sqlserver}}
-using Steeltoe.Connector.SqlServer.EFCore;
+using Steeltoe.Connector.SqlServer;
 {{/sqlserver}}
 {{#eureka-client}}
 using Steeltoe.Discovery.Client;
@@ -120,6 +120,9 @@ namespace {{Namespace}}
 {{#postgresql-efcore}}
             services.AddDbContext<TestContext>(options => options.UseNpgsql(Configuration));
 {{/postgresql-efcore}}
+{{#sqlserver}}
+            services.AddSqlServerConnection(Configuration);
+{{/sqlserver}}
             services.AddControllers();
         }
 
