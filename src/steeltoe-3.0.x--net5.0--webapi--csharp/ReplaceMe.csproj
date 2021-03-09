@@ -47,7 +47,7 @@
     <PackageReference Include="Steeltoe.Connector.EFCore"  Version="{{SteeltoeVersion}}" />
     {{/any-efcore}}
     {{#sqlserver}}
-    <PackageReference Include="Steeltoe.Connector.EFCore"  Version="{{SteeltoeVersion}}" />
+    <PackageReference Include="Steeltoe.Connector.ConnectorCore"  Version="{{SteeltoeVersion}}"/>
     <PackageReference Include="System.Data.SqlClient"  Version="{{sqlclient-version}}" />
     {{/sqlserver}}
     {{#eureka-client}}
