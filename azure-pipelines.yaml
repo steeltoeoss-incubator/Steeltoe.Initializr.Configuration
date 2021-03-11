@@ -24,28 +24,33 @@ stages:
     dependsOn: Assemble
     condition:
       not(eq(variables['build.reason'], 'PullRequest'))
-      - task: Docker@2
-        displayName: Push Docker Image
-        inputs:
-          command: buildAndPush
-          containerRegistry: SteeltoeContainerRegistry
-          repository: initializr-izrs
-          tags: |
-            $(Build.BuildId)
-            latest
-      - task: KubernetesManifest@0
-        displayName: Deploy to Staging
-        inputs:
-          kubernetesServiceConnection: SteeltoeStagingAKS
-          namespace: initializr
-          action: deploy
-          manifests: deploy/kubernetes/*.yaml
-          containers: steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
-      - task: Kubernetes@1
-        displayName: Restart InitializrApi
-        inputs:
-          connectionType: Kubernetes Service Connection
-          kubernetesServiceEndpoint: SteeltoeStagingAKS
-          namespace: initializr
-          command: rollout
-          arguments: restart deployment/initializr-api
+    jobs:
+      - job: DeployToKubernetes
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              command: buildAndPush
+              containerRegistry: SteeltoeContainerRegistry
+              repository: initializr-izrs
+              tags: |
+                $(Build.BuildId)
+                latest
+          - task: KubernetesManifest@0
+            displayName: Deploy to Staging
+            inputs:
+              kubernetesServiceConnection: SteeltoeStagingAKS
+              namespace: initializr
+              action: deploy
+              manifests: deploy/kubernetes/*.yaml
+              containers: steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
+          - task: Kubernetes@1
+            displayName: Restart InitializrApi
+            inputs:
+              connectionType: Kubernetes Service Connection
+              kubernetesServiceEndpoint: SteeltoeStagingAKS
+              namespace: initializr
+              command: rollout
+              arguments: restart deployment/initializr-api
