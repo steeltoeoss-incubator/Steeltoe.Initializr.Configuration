@@ -12,7 +12,7 @@ variables:
 name: $(major).$(minor).$(micro)-$(Rev:r)
 
 stages:
-  stage: Assemble
+  - stage: Assemble
     jobs:
       - job: Build
         pool:
