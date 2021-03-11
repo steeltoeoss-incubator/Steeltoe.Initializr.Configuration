@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Steeltoe.InitializrApi.Models" Version="0.11.0-1" />
+        <PackageReference Include="Steeltoe.InitializrApi.Models" Version="0.12.0-1" />
     </ItemGroup>
 
     <ItemGroup>
