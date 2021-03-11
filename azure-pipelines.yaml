@@ -22,12 +22,14 @@ stages:
         steps:
           - bash: bin/build
             displayName: Build IZR Files
-  - stage: Deploy
-    dependsOn: Assemble
+  - stage: deploy
+    displayName: Deploy
+    dependsOn: assemble
     condition:
       not(eq(variables['build.reason'], 'PullRequest'))
     jobs:
-      - job: DeployToKubernetes
+      - job: deployToKubernetes
+        displayName: Deploy to Kubernetes
         pool:
           vmImage: ubuntu-latest
         steps:
@@ -41,7 +43,7 @@ stages:
                 $(Build.BuildId)
                 latest
           - task: KubernetesManifest@0
-            displayName: Deploy to Staging
+            displayName: Deploy to Staging Cluster
             inputs:
               kubernetesServiceConnection: SteeltoeStagingAKS
               namespace: initializr
