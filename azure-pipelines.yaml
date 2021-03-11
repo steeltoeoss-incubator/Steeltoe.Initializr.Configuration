@@ -12,9 +12,11 @@ variables:
 name: $(major).$(minor).$(micro)-$(Rev:r)
 
 stages:
-  - stage: Assemble
+  - stage: assemble
+    displayName: Assemble
     jobs:
-      - job: Build
+      - job: build
+        displayName: Build
         pool:
           vmImage: ubuntu-latest
         steps:
