@@ -68,10 +68,10 @@ stages:
           vmImage: ubuntu-latest
         steps:
           - task: UseDotNet@2
-            displayName: Install DotNet 3
+            displayName: Install DotNet SDK
             inputs:
               packageType: sdk
-              version: 3.1.x
+              version: 5.0.x
           - task: DotNetCoreCLI@2
             displayName: dotnet restore
             inputs:
