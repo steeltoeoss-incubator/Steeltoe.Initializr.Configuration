@@ -127,7 +127,6 @@ projectMetadata:
         name: Azure Spring Cloud
         description: Target Microsoft Azure Spring Cloud hosting.
         dotNetFrameworkRange: "[netcoreapp3.1,net5.0)"
-        active: false
       - id: cloud-foundry
         name: Cloud Foundry
         description: Target Cloud Foundry hosting.
