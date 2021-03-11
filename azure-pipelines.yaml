@@ -11,39 +11,90 @@ variables:
 
 name: $(major).$(minor).$(micro)-$(Rev:r)
 
-jobs:
-  - job: Build
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-      - bash: bin/build
-        displayName: Build IZR Files
-      - task: Docker@2
-        displayName: Push Docker Image
-        inputs:
-          command: buildAndPush
-          containerRegistry: SteeltoeContainerRegistry
-          repository: initializr-izrs
-          tags: |
-            $(Build.BuildId)
-            latest
-        condition:
-          and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')))
-      - task: KubernetesManifest@0
-        displayName: Deploy to Production
-        inputs:
-          kubernetesServiceConnection: SteeltoeProductionAKS
-          namespace: initializr
-          action: deploy
-          manifests: deploy/kubernetes/*.yaml
-          containers: steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
-        condition:
-          and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')))
-      - task: Kubernetes@1
-        displayName: Restart InitializrApi
-        inputs:
-          connectionType: Kubernetes Service Connection
-          kubernetesServiceEndpoint: SteeltoeProductionAKS
-          namespace: initializr
-          command: rollout
-          arguments: restart deployment/initializr-api
+stages:
+  - stage: assemble
+    displayName: Assemble
+    jobs:
+      - job: build
+        displayName: Build
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - bash: bin/build
+            displayName: Build IZR Files
+  - stage: deploy
+    displayName: Deploy
+    dependsOn: assemble
+    condition:
+      not(eq(variables['build.reason'], 'PullRequest'))
+    jobs:
+      - job: deployToKubernetes
+        displayName: Deploy to Kubernetes
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              command: buildAndPush
+              containerRegistry: SteeltoeContainerRegistry
+              repository: initializr-izrs
+              tags: |
+                $(Build.BuildId)
+                latest
+          - task: KubernetesManifest@0
+            displayName: Deploy to Production Cluster
+            inputs:
+              kubernetesServiceConnection: SteeltoeProductionAKS
+              namespace: initializr
+              action: deploy
+              manifests: deploy/kubernetes/*.yaml
+              containers: steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
+          - task: Kubernetes@1
+            displayName: Restart InitializrApi
+            inputs:
+              connectionType: Kubernetes Service Connection
+              kubernetesServiceEndpoint: SteeltoeProductionAKS
+              namespace: initializr
+              command: rollout
+              arguments: restart deployment/initializr-api
+  - stage: qa
+    displayName: QA
+    dependsOn: deploy
+    jobs:
+      - job: runSystemTests
+        displayName: Run System Tests
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: UseDotNet@2
+            displayName: Install DotNet SDK 5.0
+            inputs:
+              packageType: sdk
+              version: 5.0.x
+          - task: UseDotNet@2
+            displayName: Install DotNet SDK 3.1
+            inputs:
+              packageType: sdk
+              version: 3.1.x
+          - task: UseDotNet@2
+            displayName: Install DotNet SDK 2.1
+            inputs:
+              packageType: sdk
+              version: 2.1.x
+          - task: DotNetCoreCLI@2
+            displayName: dotnet restore
+            inputs:
+              command: restore
+              feedsToUse: config
+              nugetConfigPath: NuGet.Config
+          - task: DotNetCoreCLI@2
+            displayName: dotnet build
+            inputs:
+              command: build
+              arguments: --no-restore
+          - task: DotNetCoreCLI@2
+            displayName: dotnet test
+            inputs:
+              command: test
+              arguments: --no-build
