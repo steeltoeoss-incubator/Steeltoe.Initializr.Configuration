@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\InitializrApi\src\InitializrApi\Steeltoe.InitializrApi.csproj" />
+        <PackageReference Include="Steeltoe.InitializrApi.Models" Version="0.11.0-1" />
     </ItemGroup>
 
     <ItemGroup>
