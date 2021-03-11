@@ -7,6 +7,7 @@ constraints:
 manifest:
 - path: app.config
 - path: appsettings.json
+- path: appsettings.Development.json
 - path: Dockerfile
   dependencies: docker
 - path: MyCircuitBreakerCommand.cs
