@@ -11,10 +11,12 @@ variables:
 
 name: $(major).$(minor).$(micro)-$(Rev:r)
 
-jobs:
-  - job: Build
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-      - bash: bin/build
-        displayName: Build IZR Files
+stages:
+  stage: Assemble
+    jobs:
+      - job: Build
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - bash: bin/build
+            displayName: Build IZR Files
