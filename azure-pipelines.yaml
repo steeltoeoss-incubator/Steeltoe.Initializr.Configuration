@@ -11,13 +11,19 @@ variables:
 
 name: $(major).$(minor).$(micro)-$(Rev:r)
 
-jobs:
-  - job: Build
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-      - bash: bin/build
-        displayName: Build IZR Files
+stages:
+  - stage: Assemble
+    jobs:
+      - job: Build
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - bash: bin/build
+            displayName: Build IZR Files
+  - stage: Deploy
+    dependsOn: Assemble
+    condition:
+      not(eq(variables['build.reason'], 'PullRequest'))
       - task: Docker@2
         displayName: Push Docker Image
         inputs:
@@ -27,8 +33,6 @@ jobs:
           tags: |
             $(Build.BuildId)
             latest
-        condition:
-          and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')))
       - task: KubernetesManifest@0
         displayName: Deploy to Staging
         inputs:
@@ -37,8 +41,6 @@ jobs:
           action: deploy
           manifests: deploy/kubernetes/*.yaml
           containers: steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
-        condition:
-          and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')))
       - task: Kubernetes@1
         displayName: Restart InitializrApi
         inputs:
