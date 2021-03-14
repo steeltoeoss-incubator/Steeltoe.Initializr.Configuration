@@ -1,6 +1,0 @@
-version: "3"
-services:
-  izrs:
-    build: .
-    ports:
-      - "8889:80"
