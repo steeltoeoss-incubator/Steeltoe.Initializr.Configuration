@@ -41,6 +41,9 @@ using Steeltoe.Management.CloudFoundry;
 using Steeltoe.Management.Endpoint;
 {{/cloud-foundry}}
 {{/actuator}}
+{{#cloud-foundry}}
+using Steeltoe.Extensions.Configuration.CloudFoundry;
+{{/cloud-foundry}}
 {{#RequiresHttps}}
 using Microsoft.AspNetCore.HttpsPolicy;
 {{/RequiresHttps}}
@@ -90,6 +93,9 @@ namespace {{Namespace}}
             services.AddAllActuators(Configuration);
 {{/cloud-foundry}}
 {{/actuator}}
+{{#cloud-foundry}}
+            services.ConfigureCloudFoundryOptions(Configuration);
+{{/cloud-foundry}}
 {{#eureka-client}}
             services.AddDiscoveryClient(Configuration);
 {{/eureka-client}}
