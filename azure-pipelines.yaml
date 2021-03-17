@@ -6,10 +6,10 @@ variables:
     value: 0
   - name: minor
     value: 1
-  - name: micro
+  - name: patch
     value: 0
 
-name: $(major).$(minor).$(micro)-$(Rev:r)
+name: $(major).$(minor).$(patch)-$(Rev:r)
 
 stages:
   - stage: assemble
@@ -28,8 +28,8 @@ stages:
     condition:
       not(eq(variables['build.reason'], 'PullRequest'))
     jobs:
-      - job: deployToKubernetes
-        displayName: Deploy to Kubernetes
+      - job: deployToStaging
+        displayName: Deploy to Staging
         pool:
           vmImage: ubuntu-latest
         steps:
