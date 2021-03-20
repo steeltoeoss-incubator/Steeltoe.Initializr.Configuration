@@ -91,10 +91,10 @@
     {{/amqp}}
   </ItemGroup>
   {{#circuit-breaker}}
-  <ItemGroup Condition="'$(BUILD)' == ''">
+  <ItemGroup Condition="'$(BUILD)' == 'LOCAL'">
     <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsStreamCore" Version="{{SteeltoeVersion}}" />
   </ItemGroup>
-  <ItemGroup Condition="'$(BUILD)' == 'LOCAL'">
+  <ItemGroup Condition="'$(BUILD)' == ''">
     <PackageReference Include="Steeltoe.CircuitBreaker.Hystrix.MetricsEventsCore" Version="{{SteeltoeVersion}}" />
     <PackageReference Include="System.Threading.ThreadPool" Version="{{threading-pool-version}}" />
   </ItemGroup>
