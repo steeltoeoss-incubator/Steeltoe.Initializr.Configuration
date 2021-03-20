@@ -162,7 +162,7 @@ namespace {{Namespace}}
             app.UseDiscoveryClient();
 {{/eureka-client}}
 
-{#circuit-breaker}}
+{{#circuit-breaker}}
             app.UseHystrixRequestContext();
             app.UseHystrixMetricsStream();
 {{/circuit-breaker}}
