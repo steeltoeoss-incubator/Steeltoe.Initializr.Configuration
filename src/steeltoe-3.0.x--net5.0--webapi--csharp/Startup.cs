@@ -129,6 +129,12 @@ namespace {{Namespace}}
 {{#sqlserver}}
             services.AddSqlServerConnection(Configuration);
 {{/sqlserver}}
+
+{{#circuit-breaker}}
+            services.AddHystrixCommand<MyCircuitBreakerCommand>("MyCircuitBreakerGroup", Configuration);
+            services.AddHystrixMetricsStream(Configuration);
+{{/circuit-breaker}}
+
             services.AddControllers();
         }
 
@@ -155,6 +161,12 @@ namespace {{Namespace}}
 {{#eureka-client}}
             app.UseDiscoveryClient();
 {{/eureka-client}}
+
+{{#circuit-breaker}}
+            app.UseHystrixRequestContext();
+            app.UseHystrixMetricsStream();
+{{/circuit-breaker}}
+
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
