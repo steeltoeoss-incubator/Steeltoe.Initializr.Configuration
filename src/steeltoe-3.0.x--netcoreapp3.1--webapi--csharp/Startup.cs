@@ -130,7 +130,7 @@ namespace {{Namespace}}
             services.AddSqlServerConnection(Configuration);
 {{/sqlserver}}
 
-{#circuit-breaker}}
+{{#circuit-breaker}}
             services.AddHystrixCommand<MyCircuitBreakerCommand>("MyCircuitBreakerGroup", Configuration);
             services.AddHystrixMetricsStream(Configuration);
 {{/circuit-breaker}}
@@ -162,7 +162,7 @@ namespace {{Namespace}}
             app.UseDiscoveryClient();
 {{/eureka-client}}
 
-{#circuit-breaker}}
+{{#circuit-breaker}}
             app.UseHystrixRequestContext();
             app.UseHystrixMetricsStream();
 {{/circuit-breaker}}
