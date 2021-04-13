@@ -49,14 +49,15 @@ stages:
               action: deploy
               manifests: deploy/kubernetes/manifest.yaml
               containers: steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
+              namespace: initializr
           - task: Kubernetes@1
             displayName: Restart InitializrApi
             inputs:
               connectionType: Kubernetes Service Connection
               kubernetesServiceEndpoint: SteeltoeStagingAKS
-              namespace: initializr
               command: rollout
               arguments: restart deployment/initializr-api
+              namespace: initializr
   - stage: qa
     displayName: QA
     dependsOn: deploy
