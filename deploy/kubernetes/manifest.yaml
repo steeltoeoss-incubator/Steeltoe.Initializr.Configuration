@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: initializr-izrs
+  namespace: initializr
 spec:
   replicas: 1
   selector:
@@ -20,3 +21,14 @@ spec:
         image: localhost:5000/initializr-izrs
         ports:
         - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: initializr-izrs
+  namespace: initializr
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: initializr-izrs
