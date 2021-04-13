@@ -46,9 +46,8 @@ stages:
             displayName: Deploy to Staging Cluster
             inputs:
               kubernetesServiceConnection: SteeltoeStagingAKS
-              namespace: initializr
               action: deploy
-              manifests: deploy/kubernetes/*.yaml
+              manifests: deploy/kubernetes/manifest.yaml
               containers: steeltoe.azurecr.io/initializr-izrs:$(Build.BuildId)
           - task: Kubernetes@1
             displayName: Restart InitializrApi
