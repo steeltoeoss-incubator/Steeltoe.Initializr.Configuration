@@ -28,8 +28,8 @@ stages:
     condition:
       not(eq(variables['build.reason'], 'PullRequest'))
     jobs:
-      - job: deployToStaging
-        displayName: Deploy to Staging
+      - job: deployToProduction
+        displayName: Deploy to Production
         pool:
           vmImage: ubuntu-latest
         steps:
