@@ -20,6 +20,8 @@ projectMetadata:
     type: single-select
     default: 3.0.2
     values:
+    - id: 3.1.0-rc1
+      name: Steeltoe 3.1.0 Release Candidate (rc1)
     - id: 3.0.2
       name: Steeltoe 3.0.2 Maintenance Release
     - id: 2.5.3
