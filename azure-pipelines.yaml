@@ -10,3 +10,14 @@ variables:
     value: 0
 
 name: $(major).$(minor).$(patch)-$(Rev:r)
+
+stages:
+  stage: noop
+  displayName: NoOp
+  jobs:
+    - job: dummy
+      displayName: Dummy
+      pool:
+        vmImage: ubuntu-latest
+      steps:
+        - script: echo "Nothing to do"
