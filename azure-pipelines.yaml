@@ -10,15 +10,3 @@ variables:
     value: 0
 
 name: $(major).$(minor).$(patch)-$(Rev:r)
-
-stages:
-  - stage: assemble
-    displayName: Assemble
-    jobs:
-      - job: build
-        displayName: Build
-        pool:
-          vmImage: ubuntu-latest
-        steps:
-          - bash: bin/build
-            displayName: Build IZR Files
