@@ -102,8 +102,12 @@ dependencies:
   - name: Messaging
     values:
     - id: amqp
-      name: RabbitMQ
-      description: Add a RabbitMQ (AMQP) connector
+      name: RabbitMQ Connector
+      description: Add a RabbitMQ connector
+    - id: messaging-rabbitmq
+      name: RabbitMQ Messaging
+      description: Add RabbitMQ messaging support and auto-configuration
+      steeltoeVersionRange: "3.1.0"
   - name: Discovery
     values:
     - id: eureka-client
