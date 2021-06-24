@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5.0</TargetFramework>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Steeltoe.InitializrApi.Models" Version="0.12.0-1" />
+        <PackageReference Include="Steeltoe.InitializrApi.Models" Version="0.20.0-20" />
     </ItemGroup>
 
     <ItemGroup>
