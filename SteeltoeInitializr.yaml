@@ -4,9 +4,6 @@ name:
 applicationName:
   type: text
   default: SampleApplication
-namespace:
-  type: text
-  default: Sample
 description:
   type: text
   default: Sample project application
