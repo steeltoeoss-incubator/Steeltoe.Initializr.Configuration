@@ -3,7 +3,7 @@ name:
   default: Sample
 applicationName:
   type: text
-  default: SampleApplication
+  default: Sample
 description:
   type: text
   default: Sample project application
