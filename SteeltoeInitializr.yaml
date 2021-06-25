@@ -1,12 +1,12 @@
 name:
   type: text
   default: Sample
-applicationName:
+namespace:
   type: text
   default: Sample
 description:
   type: text
-  default: Sample project application
+  default: Sample project
 steeltoeVersion:
   type: single-select
   default: 3.0.2
