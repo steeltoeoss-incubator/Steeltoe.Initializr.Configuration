@@ -30,12 +30,6 @@ dotNetFramework:
     name: .NET Core 3.1
   - id: netcoreapp2.1
     name: .NET Core 2.1
-dotNetTemplate:
-  type: single-select
-  default: webapi
-  values:
-  - id: webapi
-    name: ASP.NET Core Web API
 language:
   type: single-select
   default: csharp
