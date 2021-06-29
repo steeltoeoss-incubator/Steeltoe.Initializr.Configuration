@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using RestSharp;
-using Steeltoe.InitializrApi.Models;
+using Steeltoe.InitializrApi.Config;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
