@@ -99,6 +99,12 @@ dependencies:
       name: RabbitMQ Messaging
       description: Add RabbitMQ messaging support and auto-configuration
       steeltoeVersionRange: "3.1.0"
+  - name: Streams
+    values:
+    - id: stream-rabbitmq
+      name: RabbitMQ Streams
+      description: Add RabbitMQ stream support and auto-configuration
+      steeltoeVersionRange: "3.1.0"
   - name: Discovery
     values:
     - id: eureka-client
