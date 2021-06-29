@@ -12,8 +12,27 @@ variables:
 name: $(major).$(minor).$(patch)-$(Rev:r)
 
 stages:
+  - stage: deploy
+    displayName: Deploy
+    condition:
+      not(eq(variables['build.reason'], 'PullRequest'))
+    jobs:
+      - job: updateStaging
+        displayName: Update Staging
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: Kubernetes@1
+            displayName: Restart InitializrApi
+            inputs:
+              connectionType: Kubernetes Service Connection
+              kubernetesServiceEndpoint: SteeltoeStagingAKS
+              command: rollout
+              arguments: restart deployment/initializr-api
+              namespace: initializr
   - stage: qa
     displayName: QA
+    dependsOn: deploy
     jobs:
       - job: runSystemTests
         displayName: Run System Tests
