@@ -41,90 +41,90 @@ packaging:
 dependencies:
   type: hierarchical-multi-select
   values:
+  - name: Circuit Breakers
+    values:
+    - id: circuit-breaker-hystrix
+      name: Netflix Hystrix Circuit Breaker
+      description: Add support for Netflix Hystrix, a latency and fault tolerance library.
   - name: Configuration
     values:
-    - id: config-server
-      name: Spring Cloud Config Server
-      description: Add a Spring Cloud Config Server configuration source.
-    - id: placeholder
+    - id: configuration-cloud-config
+      name: Spring Cloud Config
+      description: Add a Spring Cloud Config configuration source.
+    - id: configuration-placeholder
       name: Placeholder
       description: Add a placeholder configuration source.
-    - id: random-value
+    - id: configuration-random-value
       name: Random Value
       description: Add a random value configuration source.
+  - name: Connectors
+    values:
+    - id: connector-mongodb
+      name: MongoDB Connector
+      description: Add a connector for MongoDB databases.
+    - id: connector-mysql
+      name: MySQL Connector
+      description: Add a connector for MySQL databases.
+    - id: connector-mysql-efcore
+      name: MySQL EFCore Connector
+      description: Add a connector for MySQL databases using Entity Framework Core.
+    - id: connector-oauth
+      name: OAuth Connector
+      description: Add a connector for OAuth security.
+    - id: connector-postgresql
+      name: PostgreSQL Connector
+      description: Add a connector for PostgreSQL databases.
+    - id: connector-postgresql-efcore
+      name: PostgreSQL EFCore Connector
+      description: Add a connector for PostgreSQL databases using Entity Framework Core.
+    - id: connector-rabbitmq
+      name: RabbitMQ Connector
+      description: Add a connector for RabbitMQ message brokers.
+    - id: connector-redis
+      name: Redis Connector
+      description: Add a connector for Redis data stores.
+    - id: connector-sqlserver
+      name: Microsoft SQL Server Connector
+      description: Add a connector for Microsoft SQL Server databases.
+  - name: Discovery
+    values:
+    - id: discovery-eureka
+      name: Eureka Discovery Client
+      description: Add access to Eureka, a REST-based service for locating services.
+  - name: Docker
+    values:
+    - id: dockerfile
+      name: Dockerfile
+      description: Add a Dockerfile.
+  - name: Hosting
+    values:
+    - id: hosting-azure-spring-cloud
+      name: Azure Spring Cloud
+      description: Add hosting support for Azure Spring Cloud.
+      dotNetFrameworkRange: "[netcoreapp3.1,net5.0)"
+      active: false
+    - id: hosting-cloud-foundry
+      name: Cloud Foundry
+      description: Add hosting support for Cloud Foundry.
   - name: Logging
     values:
-    - id: dynamic-logger
+    - id: logging-dynamic-logger
       name: Dynamic Logger
       description: Add dynamic logging.
-  - name: Ops
+  - name: Management
     values:
-    - id: actuator
-      name: Actuators
-      description: Add management endpoints.
-    - id: circuit-breaker
-      name: Netflix Hystrix Circuit Breaker
-      description: Add Netflix Hystrix circuit breakers.
-  - name: SQL
-    values:
-    - id: sqlserver
-      name: Microsoft SQL Server
-      description: Add a Microsoft SQL Server connector.
-    - id: mysql
-      name: MySQL
-      description: Add a MySQL connector.
-    - id: mysql-efcore
-      name: MySQL EFCore
-      description: Add a MySQL EFCore connector.
-    - id: postgresql
-      name: PostgreSQL
-      description: Add a PostgreSQL connector.
-    - id: postgresql-efcore
-      name: PostgreSQL EFCore
-      description: Add a PostgreSQL EFCore connector.
-  - name: NoSQL
-    values:
-    - id: data-redis
-      name: Redis
-      description: Add a Redis connector.
-    - id: data-mongodb
-      name: MongoDB
-      description: Add a MongoDB connector.
+    - id: management-endpoints
+      name: Management Endpoints
+      description: Add application management endpoints, such as health and metrics.
   - name: Messaging
     values:
-    - id: amqp
-      name: RabbitMQ Connector
-      description: Add a RabbitMQ connector
     - id: messaging-rabbitmq
       name: RabbitMQ Messaging
-      description: Add RabbitMQ messaging support and auto-configuration
+      description: Add RabbitMQ messaging support and auto-configuration.
       steeltoeVersionRange: "3.1.0-rc2"
   - name: Streams
     values:
     - id: stream-rabbitmq
-      name: RabbitMQ Streams
-      description: Add RabbitMQ stream support and auto-configuration
+      name: RabbitMQ Stream
+      description: Add RabbitMQ stream support and auto-configuration.
       steeltoeVersionRange: "3.1.0-rc2"
-  - name: Discovery
-    values:
-    - id: eureka-client
-      name: Eureka Discovery Client
-      description: Add a Eureka discovery client.
-  - name: Security
-    values:
-    - id: oauth
-      name: OAuth Connector
-      description: Add an OAuth connector.
-  - name: Hosting
-    values:
-    - id: docker
-      name: Docker
-      description: Add a Dockerfile.
-    - id: azure-spring-cloud
-      name: Azure Spring Cloud
-      description: Target Microsoft Azure Spring Cloud hosting.
-      dotNetFrameworkRange: "[netcoreapp3.1,net5.0)"
-      active: false
-    - id: cloud-foundry
-      name: Cloud Foundry
-      description: Target Cloud Foundry hosting.
