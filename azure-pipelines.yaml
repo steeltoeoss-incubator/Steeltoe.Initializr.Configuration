@@ -28,7 +28,7 @@ stages:
               connectionType: Kubernetes Service Connection
               kubernetesServiceEndpoint: SteeltoeStagingAKS
               command: exec
-              arguments: deployment/initializr-cli --stdin --tty -- http http://initializr-api/actuator/refresh
+              arguments: deployment/initializr-cli -- http http://initializr-api/actuator/refresh
               namespace: initializr
   - stage: qa
     displayName: QA
