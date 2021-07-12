@@ -23,12 +23,12 @@ stages:
           vmImage: ubuntu-latest
         steps:
           - task: Kubernetes@1
-            displayName: Restart InitializrApi
+            displayName: Refresh InitializrApi
             inputs:
               connectionType: Kubernetes Service Connection
               kubernetesServiceEndpoint: SteeltoeStagingAKS
-              command: rollout
-              arguments: restart deployment/initializr-api
+              command: exec
+              arguments: deployment/initializr-cli --stdin --tty -- http http://initializr-api/actuator/refresh
               namespace: initializr
   - stage: qa
     displayName: QA
