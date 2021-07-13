@@ -9,10 +9,10 @@ description:
   default: Sample project
 steeltoeVersion:
   type: single-select
-  default: 3.0.2
+  default: 3.1.0
   values:
-  - id: 3.1.0-rc2
-    name: Steeltoe 3.1.0 Release Candidate (rc2)
+  - id: 3.1.0
+    name: Steeltoe 3.1.0 Release
   - id: 3.0.2
     name: Steeltoe 3.0.2 Maintenance Release
   - id: 2.5.4
@@ -43,7 +43,7 @@ dependencies:
   values:
   - name: Circuit Breakers
     values:
-    - id: circuit-breaker-hystrix
+    - id: circuit-breaker-hystrix-foo
       name: Netflix Hystrix Circuit Breaker
       description: Add support for Netflix Hystrix, a latency and fault tolerance library.
   - name: Configuration
