@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using RestSharp;
-using Steeltoe.InitializrApi.Models;
+using Steeltoe.InitializrApi.Config;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -45,7 +45,7 @@ namespace Steeltoe.Initializr.ApiTests
                 var deserializer = new DeserializerBuilder()
                     .WithNamingConvention(CamelCaseNamingConvention.Instance)
                     .Build();
-                var config = deserializer.Deserialize<InitializrConfig>(reader);
+                var config = deserializer.Deserialize<UiConfig>(reader);
                 InitializeSteeltoeVersions(config);
                 InitializeDotNetFrameworks(config);
                 InitializeDependencies(config);
@@ -59,10 +59,10 @@ namespace Steeltoe.Initializr.ApiTests
             ApiUrl = Environment.GetEnvironmentVariable("INITIALIZR_API_URL") ?? settings.ApiUrl;
         }
 
-        private static void InitializeSteeltoeVersions(InitializrConfig config)
+        private static void InitializeSteeltoeVersions(UiConfig config)
         {
             var versions = new List<string>();
-            foreach (var version in config.ProjectMetadata.SteeltoeVersion.Values)
+            foreach (var version in config.SteeltoeVersion.Values)
             {
                 versions.Add(version.Id);
             }
@@ -70,10 +70,10 @@ namespace Steeltoe.Initializr.ApiTests
             SteeltoeVersions = versions.ToArray();
         }
 
-        private static void InitializeDotNetFrameworks(InitializrConfig config)
+        private static void InitializeDotNetFrameworks(UiConfig config)
         {
             var frameworks = new List<string>();
-            foreach (var framework in config.ProjectMetadata.DotNetFramework.Values)
+            foreach (var framework in config.DotNetFramework.Values)
             {
                 frameworks.Add(framework.Id);
             }
@@ -81,10 +81,10 @@ namespace Steeltoe.Initializr.ApiTests
             DotNetFrameworks = frameworks.ToArray();
         }
 
-        private static void InitializeDependencies(InitializrConfig config)
+        private static void InitializeDependencies(UiConfig config)
         {
             var deps = new List<string>();
-            foreach (var group in config.ProjectMetadata.Dependencies.Values)
+            foreach (var group in config.Dependencies.Values)
             {
                 foreach (var item in group.Values)
                 {
