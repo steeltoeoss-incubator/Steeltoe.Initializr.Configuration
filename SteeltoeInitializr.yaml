@@ -43,7 +43,7 @@ dependencies:
   values:
   - name: Circuit Breakers
     values:
-    - id: circuit-breaker-hystrix-foo
+    - id: circuit-breaker-hystrix
       name: Netflix Hystrix Circuit Breaker
       description: Add support for Netflix Hystrix, a latency and fault tolerance library.
   - name: Configuration
